@@ -1,0 +1,233 @@
+<tcpSrvs>
+	
+	<!-- Numero de tentativas de conexao com um dos servidores TCP de monitoramento, caso ocorra falha -->
+
+	<tcpMonitConnAtempts>
+		<attempts>25</attempts>
+	</tcpMonitConnAtempts>
+	
+	
+		<!-- Numero de tentativas de conexao com um dos servidores TCP de leitura, caso ocorra falha -->
+
+	<tcpReadConnAtempts>
+		<attempts>25</attempts>
+	</tcpReadConnAtempts>
+	
+	
+	<!-- Numero de tentativas de conexao com um dos servidores TCP de escrita, caso ocorra falha -->
+
+	<tcpWriteConnAtempts>
+		<attempts>25</attempts>
+	</tcpWriteConnAtempts>
+	
+	
+
+
+	<!-- Servidores TCP de monitoramento: IP 172.18.0.149 -->
+
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9130</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9131</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9132</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9133</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9134</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9135</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9136</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9137</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9138</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9139</port>
+		<active>1</active>
+	</tcpSrvMonit>
+
+
+
+	<!-- Servidores TCP de monitoramento: IP 172.18.0.150 -->
+
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9130</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9131</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9132</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9133</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9134</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9135</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9136</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9137</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9138</port>
+		<active>1</active>
+	</tcpSrvMonit>
+	<tcpSrvMonit>
+		<ip>172.18.0.150</ip>
+		<port>9139</port>
+		<active>1</active>
+	</tcpSrvMonit>
+		
+
+
+	<!-- Servidores TCP de leitura: IP 172.18.0.148 -->
+	
+	<tcpSrvRead>
+		<ip>172.18.0.148</ip>
+		<port>9130</port>
+		<active>1</active>
+	</tcpSrvRead>
+	<tcpSrvRead>
+		<ip>172.18.0.148</ip>
+		<port>9131</port>
+		<active>1</active>
+	</tcpSrvRead>
+	<tcpSrvRead>
+		<ip>172.18.0.148</ip>
+		<port>9132</port>
+		<active>1</active>
+	</tcpSrvRead>
+	<tcpSrvRead>
+		<ip>172.18.0.148</ip>
+		<port>9133</port>
+		<active>1</active>
+	</tcpSrvRead>
+	
+	
+	<!-- Servidores TCP de leitura: IP 172.18.0.219 -->
+	
+	<tcpSrvRead>
+		<ip>172.18.0.219</ip>
+		<port>9130</port>
+		<active>1</active>
+	</tcpSrvRead>
+	<tcpSrvRead>
+		<ip>172.18.0.219</ip>
+		<port>9131</port>
+		<active>1</active>
+	</tcpSrvRead>
+	<tcpSrvRead>
+		<ip>172.18.0.219</ip>
+		<port>9132</port>
+		<active>1</active>
+	</tcpSrvRead>
+	<tcpSrvRead>
+		<ip>172.18.0.219</ip>
+		<port>9133</port>
+		<active>1</active>
+	</tcpSrvRead>
+	
+			
+	
+	<!-- Servidores TCP de escrita: IP 172.18.0.148 -->
+	
+	<tcpSrvWrite>
+		<ip>172.18.0.148</ip>
+		<port>9140</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	<tcpSrvWrite>
+		<ip>172.18.0.148</ip>
+		<port>9141</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	<tcpSrvWrite>
+		<ip>172.18.0.148</ip>
+		<port>9142</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	<tcpSrvWrite>
+		<ip>172.18.0.148</ip>
+		<port>9143</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	
+	
+	<!-- Servidores TCP de escrita: IP 172.18.0.219 -->
+	
+	<tcpSrvWrite>
+		<ip>172.18.0.219</ip>
+		<port>9140</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	<tcpSrvWrite>
+		<ip>172.18.0.219</ip>
+		<port>9141</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	<tcpSrvWrite>
+		<ip>172.18.0.219</ip>
+		<port>9142</port>
+		<active>1</active>
+	</tcpSrvWrite>
+	<tcpSrvWrite>
+		<ip>172.18.0.219</ip>
+		<port>9143</port>
+		<active>1</active>
+	</tcpSrvWrite>
+		
+
+</tcpSrvs>
