@@ -1,0 +1,7 @@
+CREATE TABLE room (scoId bigint(20) NOT NULL, nome varchar(255) NOT NULL, desabilitada datetime DEFAULT NULL, KEY indx_nome (nome), PRIMARY KEY (scoId)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE roominfo (scoId bigint(20) NOT NULL, hosts int(11) DEFAULT NULL, apresentadores int(11) DEFAULT NULL, convidados int(11) DEFAULT NULL,  `total` int(11) DEFAULT NULL, dataHora datetime NOT NULL, horaHost datetime NOT NULL, horaApresentador datetime NOT NULL, horaConvidado datetime NOT NULL, KEY iindx_scoId (scoId),   CONSTRAINT fk_scoId FOREIGN KEY (scoId) REFERENCES room (scoId)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(255) NOT NULL, senha VARCHAR(255) NOT NULL, email VARCHAR(255) DEFAULT NULL);
+
+CREATE TABLE hostRoom (nome varchar(255) NOT NULL, login varchar(255) NOT NULL, roomScoId bigint(20) NOT NULL,  desabilitado datetime DEFAULT NULL);
