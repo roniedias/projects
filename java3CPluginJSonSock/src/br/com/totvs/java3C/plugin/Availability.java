@@ -289,7 +289,7 @@ public class Availability {
 			 */
 			
 			
-			if(statusGeralAmbiente == 1 && numberOfChecks < 4) {   // Se o resultado final do método de disponibilidade 
+			if(statusGeralAmbiente == 1 && numberOfChecks < 2) {   // Se o resultado final do método de disponibilidade 
 																   // for igual a 1 (não O.K.) e o número de chamadas a    
 																   // ele for menor do que o valor especificado em 
 																   // numberOfChecks, uma nova chamada ao método será 
