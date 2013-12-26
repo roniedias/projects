@@ -37,7 +37,7 @@ public class Latency {
 	private String ZCA_MEMO;
 	
 
-	private String tipoServico; // Tipo de serviço ERP (10 ou 29)
+	private ArrayList<String> tiposServicos = new ArrayList<String>(); // Tipo de serviço ERP (10 ou 29)
 	
 		
 	
@@ -66,6 +66,7 @@ public class Latency {
 	
 	private String[] zbhAllTipSrvs;
 	private ArrayList<ServicosItemTipoAmbLatency> servicosItemTipoAmb = new ArrayList<ServicosItemTipoAmbLatency>();
+	private ArrayList<ServicosItemTipoAmbLatency> todosServicosItemTipoAmb = new ArrayList<ServicosItemTipoAmbLatency>();
 	
 
 	
@@ -93,13 +94,24 @@ public class Latency {
 		// Procedimento para atribuir valor à variável "tipoServico"		
 		for(int z = 0; z < zbhAllTipSrvs.length; z++) {
 			if(zbhAllTipSrvs[z].equals("10") || zbhAllTipSrvs[z].equals("29")) {
-				tipoServico = zbhAllTipSrvs[z]; 
+				tiposServicos.add(zbhAllTipSrvs[z]); 
 			}
 		}
 		
 		
+		for(int t = 0; t < tiposServicos.size(); t++) {			
+			
+			servicosItemTipoAmb = parserRead.getServicosItemTipoAmb(tiposServicos.get(t));
+			
+			for(int s = 0; s < servicosItemTipoAmb.size(); s++) {
+				todosServicosItemTipoAmb.add(servicosItemTipoAmb.get(s));
+			}	
+			
+		}
 		
-		servicosItemTipoAmb = parserRead.getServicosItemTipoAmb(tipoServico);  
+		
+		
+		
 		
 		// Valores iguais, independentemente da posição do ArrayList
 		this.ZCA_ITEM = servicosItemTipoAmb.get(0).getZbcItem();
@@ -137,9 +149,9 @@ public class Latency {
 
 		
 			
-	  /* Primeiro passo: Efetuar a chamada à rotina que verifica a latência de rede. 
+	  /* Execução da chamada à rotina que verifica a latência de rede. 
 	   * 
-	   * Para efetuar a requisição ao WS, é necessário passar as seguintes informações:
+	   * Para efetuar a requisição, é necessário passar as seguintes informações:
 	   *
 	   * IP do servidor Protheus;
 	   * Porta de conexão;
@@ -147,7 +159,6 @@ public class Latency {
 	   * Data e hora a partir das quais será feita a leitura do arquivo. Somente serão lidas as linhas dentro do 
 	   * período enviado;
 	   * 	
-	   * Obs: Este tipo de checagem será feita apenas para servidores master e TAMBÉM slaves
  	   */
 	
 				
@@ -160,20 +171,20 @@ public class Latency {
 
 				
 			
-		for(int s = 0; s < servicosItemTipoAmb.size(); s++) { // Novo	
+		for(int s = 0; s < todosServicosItemTipoAmb.size(); s++) { // Novo	
 						
-			if(servicosItemTipoAmb.size() == 1) { // Se houver apenas um serviço cadastrado (getZBC_BALANC().equals("N")) 
-				servers.add(new ServerLatency(servicosItemTipoAmb.get(s).getZbcIpHost().replaceAll("\\s", ""), servicosItemTipoAmb.get(s).getZbcPorta().replaceAll("\\s", ""), servicosItemTipoAmb.get(s).getZbcEnviro().replaceAll("\\s", ""), dataUltimaVerif, horaUltimaVerif));				
+			if(todosServicosItemTipoAmb.size() == 1) { // Se houver apenas um serviço cadastrado (getZBC_BALANC().equals("N")) 
+				servers.add(new ServerLatency(todosServicosItemTipoAmb.get(s).getZbcIpHost().replaceAll("\\s", ""), todosServicosItemTipoAmb.get(s).getZbcPorta().replaceAll("\\s", ""), todosServicosItemTipoAmb.get(s).getZbcEnviro().replaceAll("\\s", ""), dataUltimaVerif, horaUltimaVerif));				
 			}
 			else { 
-				if(servicosItemTipoAmb.get(s).getZbcBalanc().equals("S")) { // Apenas serviços do tipo slave
-					servers.add(new ServerLatency(servicosItemTipoAmb.get(s).getZbcIpHost().replaceAll("\\s", ""), servicosItemTipoAmb.get(s).getZbcPorta().replaceAll("\\s", ""), servicosItemTipoAmb.get(s).getZbcEnviro().replaceAll("\\s", ""), dataUltimaVerif, horaUltimaVerif));
+				if(todosServicosItemTipoAmb.get(s).getZbcBalanc().equals("S")) { // Apenas serviços do tipo slave
+					servers.add(new ServerLatency(todosServicosItemTipoAmb.get(s).getZbcIpHost().replaceAll("\\s", ""), todosServicosItemTipoAmb.get(s).getZbcPorta().replaceAll("\\s", ""), todosServicosItemTipoAmb.get(s).getZbcEnviro().replaceAll("\\s", ""), dataUltimaVerif, horaUltimaVerif));
 
 //				System.out.println("dataUltimaVerif: " + dataUltimaVerif);
-//				System.out.println("ENVIRONMENT: " + servicosItemTipoAmb.get(s).getZbcEnviro().replaceAll("\\s", ""));
+//				System.out.println("ENVIRONMENT: " + todosServicosItemTipoAmb.get(s).getZbcEnviro().replaceAll("\\s", ""));
 //				System.out.println("horaUltimaVerif: " + horaUltimaVerif);
-//				System.out.println("IP: " + servicosItemTipoAmb.get(s).getZbcIpHost().replaceAll("\\s", ""));
-//				System.out.println("PORTA: " + servicosItemTipoAmb.get(s).getZbcPorta().replaceAll("\\s", ""));
+//				System.out.println("IP: " + todosServicosItemTipoAmb.get(s).getZbcIpHost().replaceAll("\\s", ""));
+//				System.out.println("PORTA: " + todosServicosItemTipoAmb.get(s).getZbcPorta().replaceAll("\\s", ""));
 //				System.out.println("\n ===================================================================");
 					
 				}
@@ -181,7 +192,7 @@ public class Latency {
 			
 		}
 		
-				
+						
 		
 		latencyParser = new LatencyParserMon(servers); 
 				
