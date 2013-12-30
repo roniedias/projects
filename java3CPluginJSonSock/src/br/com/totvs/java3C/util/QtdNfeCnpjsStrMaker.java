@@ -15,7 +15,7 @@ public class QtdNfeCnpjsStrMaker {
 		else {
 			this.qtdNfeCnpjStr = "$";
 			for(int q = 0; q < qtdNfeCnpj.length; q++) {
-				this.qtdNfeCnpjStr += String.valueOf(qtdNfeCnpj[q].getZcgAcumMe()) + "#" + String.valueOf(qtdNfeCnpj[q].getZcgAcumSr()) + "#" + String.valueOf(qtdNfeCnpj[q].getZcgAcumTo()) + "#" + qtdNfeCnpj[q].getZcgAcumCnpj() + "$"; 
+				this.qtdNfeCnpjStr += String.valueOf(qtdNfeCnpj[q].getZcgAcumMe()) + "#" + String.valueOf(qtdNfeCnpj[q].getZcgAcumSr()) + "#" + String.valueOf(qtdNfeCnpj[q].getZcgAcumTo()) + "#" + qtdNfeCnpj[q].getZcgAcumCnpj() + "#" + qtdNfeCnpj[q].getZcgColaboracao() + "$"; 
 			}
 			
 		}

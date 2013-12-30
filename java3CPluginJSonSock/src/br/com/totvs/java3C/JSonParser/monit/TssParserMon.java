@@ -48,7 +48,7 @@ public class TssParserMon {
         	
         	JSONArray jSonArray = jsonObject.getJSONArray("TSSINFO");
         	
-        	String[] returnArray = new String[8];
+        	String[] returnArray = new String[9];
 	        	
         	returnArray[0] = (String) jSonArray.getJSONObject(0).get("CNPJ");
         	returnArray[1] = (String) jSonArray.getJSONObject(0).get("PRODUTO_TESTE");
@@ -58,6 +58,7 @@ public class TssParserMon {
         	returnArray[5] = (String) jSonArray.getJSONObject(0).get("STATUS");
         	returnArray[6] = (String) jSonArray.getJSONObject(0).get("MESSAGE");
         	returnArray[7] = (String) jSonArray.getJSONObject(0).get("ELAPTIME");
+        	returnArray[8] = (String) jSonArray.getJSONObject(0).get("COLABORACAO");
         	
         	
         	this.returnArray = returnArray;

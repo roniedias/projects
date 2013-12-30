@@ -8,14 +8,17 @@ public class ParamQtdNfeCnpj {
     private BigInteger zcgAcumSr;
     private BigInteger zcgAcumTo;
     private String zcgAcumCnpj;
+    private String zcgColaboracao;
     
     
-    public ParamQtdNfeCnpj(BigInteger zcgAcumMe, BigInteger zcgAcumSr, BigInteger zcgAcumTo, String zcgAcumCnpj) {
+    public ParamQtdNfeCnpj(BigInteger zcgAcumMe, BigInteger zcgAcumSr, BigInteger zcgAcumTo, String zcgAcumCnpj, String zcgColaboracao) {
     	this.zcgAcumMe = zcgAcumMe;
     	this.zcgAcumSr = zcgAcumSr;
     	this.zcgAcumTo = zcgAcumTo;
     	this.zcgAcumCnpj = zcgAcumCnpj;
+    	this.zcgColaboracao = zcgColaboracao;
     }
+
 
 
 	public BigInteger getZcgAcumMe() {
@@ -55,6 +58,17 @@ public class ParamQtdNfeCnpj {
 	public void setZcgAcumCnpj(String zcgAcumCnpj) {
 		this.zcgAcumCnpj = zcgAcumCnpj;
 	}
+	
+	
+
+	public String getZcgColaboracao() {
+		return zcgColaboracao;
+	}
+
+	public void setZcgColaboracao(String zcgColaboracao) {
+		this.zcgColaboracao = zcgColaboracao;
+	}
+
     
     
 }

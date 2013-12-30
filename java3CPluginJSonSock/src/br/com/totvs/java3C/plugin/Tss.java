@@ -57,7 +57,6 @@ public class Tss {
 	private ArrayList<ZbcTopService> zbcTopServices = new ArrayList<ZbcTopService>();
 	
 	private int totalCnpj;
-
 	
 		
 	public Tss(String codAmbiente, String codTipoAmbiente, String codMonitoramento, String codProduto) {
@@ -164,13 +163,13 @@ public class Tss {
 																		   // tssParserReturn[1] = PRODUTO_TESTE 
 																		   // tssParserReturn[2] = PRODUTO_PRODUCAO 
   																		   // tssParserReturn[3] = SERVICO_TESTE 
-																		   // tssParserReturn[4] = SERVICO_PRODUCAO 
+																		   // tssParserReturn[4] = SERVICO_PRODUCAO
 																		   // tssParserReturn[5] = STATUS 
 																		   // tssParserReturn[6] = MESSAGE 
-																		   // tssParserReturn[7] = ELAPTIME 
+																		   // tssParserReturn[7] = ELAPTIME
+																		   // tssParserReturn[8] = COLABORACAO
+				
 		    	
-		    	
-		    
 		    
 		    
 		    // Antes de executar o processo de envio de informações para o 3C, é preciso verificar se o status do 
@@ -198,7 +197,7 @@ public class Tss {
 		    BigInteger qtdCnpjServicosBigInteger= BigInteger.valueOf(quantCnpjServicos);
 		    BigInteger totalCnpjBigInteger = BigInteger.valueOf(totalCnpj);
 		    
-		    auxQtdNfeCnpj = new ParamQtdNfeCnpj(qtdCnpjProdutosBigInteger, qtdCnpjServicosBigInteger, totalCnpjBigInteger, tssParserReturn[0]);
+		    auxQtdNfeCnpj = new ParamQtdNfeCnpj(qtdCnpjProdutosBigInteger, qtdCnpjServicosBigInteger, totalCnpjBigInteger, tssParserReturn[0], tssParserReturn[8]);
 		    QTDNFECNPJ[c] = auxQtdNfeCnpj;
 		    auxListZCA_MEMO.add(tssParserReturn[0] + ": Prod " + quantCnpjProdutos + "; Serv " + quantCnpjServicos + ". ");
 		    
