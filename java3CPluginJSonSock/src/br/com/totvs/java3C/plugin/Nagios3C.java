@@ -60,22 +60,8 @@ public class Nagios3C {
 //			new Nagios3C("T16423", "00", "000051", "01", "002", "000030");
 //		    new Nagios3C("T16423", "00", "000051", "01", "004", "000030");
 //			new Nagios3C("T16423", "00", "000051", "01", "026", "000036");
-     	         	    
-//            new Nagios3C("TEXKQL", "00", "000069", "01", "002", "000024");
-		
-
-//		    new Nagios3C("T87332", "00", "000070", "01", "004", "000030");
-//			new Nagios3C("T87332", "00", "000070", "01", "023", "000030");
-//			new Nagios3C("T87332", "00", "000070", "01", "045", "000030");
-//		    new Nagios3C("T87332", "00", "000070", "01", "002", "000030");
-//			new Nagios3C("T87332", "00", "000070", "01", "026", "000036");
-//		    new Nagios3C("T87332", "00", "000070", "01", "025", "000030");
-			
-//			new Nagios3C("TEXKQL", "00", "000069", "01", "004", "000024");
 			 
-		
-			
-			
+					
 		}
 		else {
 			System.out.println("Este plugin requer 6 argumentos: ARG1: CODIGO DO CLIENTE; ARG2: CODIGO DA EMPRESA; ARG3: CODIGO DO AMBIENTE; ARG4: CODIGO DO TIPO DO AMBIENTE; ARG5: CODIGO DO MONITORAMENTO DESEJADO; ARG6: CODIGO DO PRODUTO.");
