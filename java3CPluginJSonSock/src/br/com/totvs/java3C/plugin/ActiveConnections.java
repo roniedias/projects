@@ -116,9 +116,10 @@ public class ActiveConnections {
 				
 			}
 			else {
-						
+				
+				System.out.println(servicosItemTipoAmb.get(s).getZbcBalanc());
 					
-				if(servicosItemTipoAmb.get(s).getZbcBalanc().equals("S")) { // Pegar somente os servidores que forem balance
+//				if(servicosItemTipoAmb.get(s).getZbcBalanc().equals("S")) { // Pegar somente os servidores que forem balance
 																			
 								
 					aCJSonParser = new ActiveConnParserMon(ip, porta, environment);
@@ -140,7 +141,7 @@ public class ActiveConnections {
 					if(Float.valueOf(aCJSonParserReturn[0]) != -1) 
 						ZCA_RESULT += Float.valueOf(aCJSonParserReturn[0]); 																																					
 						   						
-				}	
+//				}	
 					
 						
 				}
