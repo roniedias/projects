@@ -117,7 +117,7 @@ public class ActiveConnections {
 			}
 			else {
 				
-				System.out.println(servicosItemTipoAmb.get(s).getZbcBalanc());
+
 					
 //				if(servicosItemTipoAmb.get(s).getZbcBalanc().equals("S")) { // Pegar somente os servidores que forem balance
 																			
