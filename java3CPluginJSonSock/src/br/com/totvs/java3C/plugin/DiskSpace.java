@@ -42,9 +42,9 @@ public class DiskSpace {
 	private ArrayList<String> auxListZCA_MEMO = new ArrayList<String>();
 	
 		
-	private String codTipoServicoLicense = "13";
-	private String codTipoServicoTopConnect = "16";
-	private String codTipoServicoCtree = "21"; 
+//	private String codTipoServicoLicense = "13";
+//	private String codTipoServicoTopConnect = "16";
+//	private String codTipoServicoCtree = "21"; 
 
 	private DiskSpaceParserMon diskSpaceParser;
 	private String [] diskSpaceParserReturn;
@@ -62,7 +62,8 @@ public class DiskSpace {
 		this.ZCA_CODAMB = codAmbiente; // Quarto parâmetro passado para STRUPARAMGRVMONITORAMENTO
 		this.ZCA_TIPAMB = codTipoAmbiente; // Decimo primeiro parâmetro passado para STRUPARAMGRVMONITORAMENTO
 		
-		ParserRead parserRead = new ParserRead("GENERIC_READ", codAmbiente, codTipoAmbiente, codProduto);
+//		ParserRead parserRead = new ParserRead("GENERIC_READ", codAmbiente, codTipoAmbiente, codProduto);
+		ParserRead parserRead = new ParserRead("DISKSPACE_READ", codAmbiente, codTipoAmbiente, codProduto);
 		
 		
 		if(parserRead.getZbbStatus().replaceAll("\\s", "").equals("-")) {
@@ -75,10 +76,14 @@ public class DiskSpace {
 		
 		// Adicionando os tipos de serviço a zbhTipSrvs, excluindo os Tipos LICENSE, TOP e CTREE
 		for(int z = 0; z < zbhAllTipSrvs.length; z++) {
-			if(!(zbhAllTipSrvs[z].equals(codTipoServicoLicense) || zbhAllTipSrvs[z].equals(codTipoServicoTopConnect) || zbhAllTipSrvs[z].equals(codTipoServicoCtree))) {
+//			if(!(zbhAllTipSrvs[z].equals(codTipoServicoLicense) || zbhAllTipSrvs[z].equals(codTipoServicoTopConnect) || zbhAllTipSrvs[z].equals(codTipoServicoCtree))) {
 				zbhTipSrvs.add(zbhAllTipSrvs[z]);  
-			}									  
+//			}									  
 		}
+		
+		
+		
+		
 
 		
 		// Primeiro passo: Adicionar à lista lstZbcDiskSpaceFields, apenas os campos IP, PORTA, ENVIRONMENT e PATH DE INSTALAÇÃO 
