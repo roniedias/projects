@@ -22,7 +22,9 @@ public class RandomTcpSrv {
 		geradorAleatorioTcpSrv = new Random();
 		
 //		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("src\\br\\com\\totvs\\java3C\\util\\tcpServersTst.xml", nodeName);
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("src\\br\\com\\totvs\\java3C\\util\\tcpServers.xml", nodeName);
+//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\tcpServers.xml", nodeName);
+		
+		
 		
 		// Producao
 		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("/usr/lib/nagios/plugins/tcpServers.xml", nodeName);
