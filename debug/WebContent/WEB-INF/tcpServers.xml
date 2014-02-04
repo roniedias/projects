@@ -1,0 +1,34 @@
+<tcpSrvs>
+
+	<tcpMonitConnAtempts>
+		<attempts>15</attempts>
+	</tcpMonitConnAtempts>
+
+	<tcpReadConnAtempts>
+		<attempts>10</attempts>
+	</tcpReadConnAtempts>
+
+	<tcpWriteConnAtempts>
+		<attempts>5</attempts>
+	</tcpWriteConnAtempts>
+
+
+	<tcpSrvMonit>
+		<ip>172.18.0.149</ip>
+		<port>9199</port>
+		<active>1</active>
+	</tcpSrvMonit>
+
+	<tcpSrvRead>
+		<ip>172.18.0.148</ip>
+		<port>9199</port>
+		<active>1</active>
+	</tcpSrvRead>
+	
+	<tcpSrvWrite>
+		<ip>172.18.0.148</ip>
+		<port>9199</port>
+		<active>1</active>
+	</tcpSrvWrite>
+</tcpSrvs>
+	
