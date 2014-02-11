@@ -21,7 +21,7 @@
 
 	<tcpSrvRead>
 		<ip>172.18.0.148</ip>
-		<port>9199</port>
+		<port>9198</port>
 		<active>1</active>
 	</tcpSrvRead>
 	

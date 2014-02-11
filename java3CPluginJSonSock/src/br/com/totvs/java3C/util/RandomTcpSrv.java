@@ -21,13 +21,14 @@ public class RandomTcpSrv {
 		
 		geradorAleatorioTcpSrv = new Random();
 		
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("src\\br\\com\\totvs\\java3C\\util\\tcpServersTst.xml", nodeName);
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\tcpServers.xml", nodeName);
-		
+//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("src\\br\\com\\totvs\\java3C\\util\\tcpServersTst.xml", nodeName); 	
+		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\tcpServers.xml", nodeName); // Configuração para o debug, nos servidores 172.18.0.149 e 150
+				
+	
 		
 		
 		// Producao
-		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("/usr/lib/nagios/plugins/tcpServers.xml", nodeName);
+//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("/usr/lib/nagios/plugins/tcpServers.xml", nodeName); // Configuração para deploy nos pollers
 
 		
 		// Nao em funcionamento hoje

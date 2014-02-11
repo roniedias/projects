@@ -48,6 +48,14 @@ function load() {
 }
 
 
+
+function reiniciar() {
+	$('#input-cliente').val("");
+	location.reload();
+}
+
+
+
 //Função que envia as informações do ambiente a ser monitorado para o controller, com base nos 
 //parâmetros passados via URL
 function executeMonitWithUrlParams() {
@@ -374,22 +382,45 @@ function executeMonit() {
  */
 
 
-var ws = new WebSocket("ws://172.18.0.149:8081/debug/servletWebSocket");
-
+var webSockMonit = new WebSocket("ws://172.18.0.149:8081/debug/webSockMonit");
+//var webSockMonit = new WebSocket("ws://172.18.0.149:8081/debug/servletWebSocket");
 			
-ws.onmessage = function(message) {
-	document.getElementById("txtArea").textContent += message.data + "\n";
+webSockMonit.onmessage = function(message) {
+	document.getElementById("txt-area-monit").textContent += message.data + "\n";
 };
 			
 function closeConnect() {
-	ws.close();
+	webSockMonit.close();
 }
 
 
-function reiniciar() {
-	$('#input-cliente').val("");
-	location.reload();
+
+var webSockRead = new WebSocket("ws://172.18.0.148:8081/debug/webSockRead");
+
+webSockRead.onmessage = function(message) {
+	document.getElementById("txt-area-leitura").textContent += message.data + "\n";
+};
+			
+function closeConnect() {
+	webSockRead.close();
 }
+
+
+
+var webSockWrite = new WebSocket("ws://172.18.0.148:8081/debug/webSockWrite");
+
+webSockWrite.onmessage = function(message) {
+	document.getElementById("txt-area-escrita").textContent += message.data + "\n";
+};
+			
+function closeConnect() {
+	webSockWrite.close();
+}
+
+
+
+
+
 
 
 

@@ -16,8 +16,8 @@ import org.apache.catalina.websocket.MessageInbound;
 import org.apache.catalina.websocket.WsOutbound;
 
 
-@WebServlet(urlPatterns="/servletWebSocket")
-public class ServletWebSocket extends WebSocketServlet {
+@WebServlet(urlPatterns="/webSockMonit")
+public class ServletWebSocketMonit extends WebSocketServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +31,7 @@ public class ServletWebSocket extends WebSocketServlet {
 	
 
 	
-	public ServletWebSocket() {
+	public ServletWebSocketMonit() {
 		
 		new Thread(new Runnable() {
 

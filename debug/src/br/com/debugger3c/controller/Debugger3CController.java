@@ -2,7 +2,6 @@ package br.com.debugger3c.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-//import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.debugger3c.dao.Dao3C;
 import br.com.debugger3c.model.Client3C;
+// import br.com.debugger3c.monit.Monit;
 
 import br.com.debugger3c.util.JSonMaker;
+// import br.com.totvs.java3C.plugin.Nagios3C;
+
 
 @Controller
 public class Debugger3CController {
@@ -43,13 +45,16 @@ public class Debugger3CController {
 	
 	
 	
-//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_17\\jre\\bin\\java.exe";
-//	private static final String JAR_FILE = "C:\\Users\\ronie.dias\\workspace\\debugger3c-spring\\WebContent\\WEB-INF\\lib\\3CNagiosPlugin.jar";
-	
+
+
+
+//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_17\\jre\\bin\\java.exe"; // localhost
 //	private static final String PATH_TO_JAVA = "C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe"; // 172.18.0.150
-	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_45\\jre\\bin\\java.exe"; // 172.18.0.149
-	
-	private static final String JAR_FILE = "C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\lib\\3CNagiosPlugin.jar";
+//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_45\\jre\\bin\\java.exe"; // 172.18.0.149
+	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_51\\jre\\bin\\java.exe"; // 172.18.0.148
+
+//	private static final String JAR_FILE = "C:\\Users\\ronie.dias\\workspace\\debugger3c-spring\\WebContent\\WEB-INF\\lib\\3CNagiosPlugin.jar"; // localhost
+	private static final String JAR_FILE = "C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\lib\\3CNagiosPlugin.jar"; // Servers 172.18.0.149 e 150
 	
 	
 	public Debugger3CController() {
@@ -198,7 +203,9 @@ public class Debugger3CController {
 		
 		codTipoServico = request.getParameter("codTipoServico");
 		
-		monit();					
+		//monit();
+		monitExecutingJarFile();
+		
 	
 	}
 	
@@ -214,7 +221,9 @@ public class Debugger3CController {
 		codTipoServico = request.getParameter("codTipoServico"); 
 		codigoProduto = request.getParameter("codigoProduto");
 		
-		monit();
+		//monit();
+		monitExecutingJarFile();
+		
 		
 		
 	}
@@ -222,8 +231,23 @@ public class Debugger3CController {
 	
 	
 	
+	
+//	private void monit() {
+//		
+//		new Thread(new Runnable() {
+//			public void run() {
+//				new Nagios3C(codigoCliente, codigoEmpresa, codigoAmbiente, codigoTipoAmb, codTipoServico, codigoProduto);
+//			}
+//		}).start();
+//
+//	}
+	
+	
+	
+	
+	
 	// Método que efetua o monitoramento, propriamente dito
-	private void monit() {
+	private void monitExecutingJarFile() {
 		
 		
 		new Thread(new Runnable() {
