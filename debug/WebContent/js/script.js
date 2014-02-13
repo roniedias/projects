@@ -17,16 +17,13 @@ var urlNomeTipoAmbiente;
 
 
 
-
-
 function load() {
-	
+		
 	selectSet("hidden", 'select-tipos-amb');
 	selectSet("hidden", 'select-produtos');
-	selectSet("hidden", 'select-tipos-serv');
-	
+	selectSet("hidden", 'select-tipos-serv');		
 	document.getElementById('submit-btn').style.visibility="hidden";
-	
+
 	urlCodCliente = decodeURIComponent((new RegExp('[?|&]' + 'cli' + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 	urlCodLoja = decodeURIComponent((new RegExp('[?|&]' + 'loja' + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 	urlCodAmbiente = decodeURIComponent((new RegExp('[?|&]' + 'amb' + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
@@ -49,10 +46,16 @@ function load() {
 
 
 
-function reiniciar() {
-	$('#input-cliente').val("");
-	location.reload();
-}
+function limparSelects() {
+	
+	selectSet("hidden", 'select-tipos-amb');
+	selectSet("hidden", 'select-produtos');
+	selectSet("hidden", 'select-tipos-serv');
+	document.getElementById('submit-btn').style.visibility="hidden";
+	$("#input-cliente").val('');
+	
+}	
+
 
 
 
@@ -135,7 +138,13 @@ function selectSet(status, selectId) {
 
 function preencheAutocomplete(items) {	 
 	 $(" #input-cliente ").autocomplete({
-		source: items
+		source: items,
+		
+		select: function(event, ui) {
+			var selectedObj = ui.item;         
+			getClientEnvTypes(selectedObj.value);
+		}
+	 
 	 });
 };
 
@@ -370,6 +379,13 @@ function executeMonit() {
 
 
 
+function limparLogs() {
+	
+	$("#txt-area-leitura").text("");
+	$("#txt-area-monit").text("");
+	$("#txt-area-escrita").text("");
+	
+}
 
 
 
@@ -383,7 +399,7 @@ function executeMonit() {
 
 
 var webSockMonit = new WebSocket("ws://172.18.0.149:8081/debug/webSockMonit");
-//var webSockMonit = new WebSocket("ws://172.18.0.149:8081/debug/servletWebSocket");
+
 			
 webSockMonit.onmessage = function(message) {
 	document.getElementById("txt-area-monit").textContent += message.data + "\n";
