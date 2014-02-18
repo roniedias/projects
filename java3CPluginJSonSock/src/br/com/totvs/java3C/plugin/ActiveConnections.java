@@ -36,9 +36,9 @@ public class ActiveConnections {
 	private String environment; 
 
 	
-	
-	private String codTipoServicoLicense = "13";
-	private String codTipoServicoTopConnect = "16";
+	// Não mais necessário pois este tipo de serviço não está mais sendo passado no JSON
+//	private String codTipoServicoLicense = "13";
+//	private String codTipoServicoTopConnect = "16";
 	
 	private ActiveConnParserMon aCJSonParser;
 	private String [] aCJSonParserReturn;
@@ -58,7 +58,7 @@ public class ActiveConnections {
 		this.ZCA_CODAMB = codAmbiente;
 		this.ZCA_TIPAMB = codTipoAmbiente;
 		
-		ParserRead parserRead = new ParserRead("GENERIC_READ", codAmbiente, codTipoAmbiente, codProduto);
+		ParserRead parserRead = new ParserRead("ACTIVECONNECTIONS_READ", codAmbiente, codTipoAmbiente, codProduto);
 		
 		
 		if(parserRead.getZbbStatus().replaceAll("\\s", "").equals("-")) {
@@ -72,9 +72,9 @@ public class ActiveConnections {
 		
 		// Adicionando os tipos de serviço a zbhTipSrvs, excluindo os Tipos LICENSE e TOP CONNECT
 		for(int z = 0; z < zbhAllTipSrvs.length; z++) {
-			if(!(zbhAllTipSrvs[z].equals(codTipoServicoLicense) || zbhAllTipSrvs[z].equals(codTipoServicoTopConnect))) {
+//			if(!(zbhAllTipSrvs[z].equals(codTipoServicoLicense) || zbhAllTipSrvs[z].equals(codTipoServicoTopConnect))) {
 				zbhTipSrvs.add(zbhAllTipSrvs[z]); // Adicionando os tipos de serviço a zbhTipSrvs, excluindo os 
-			}									  // Tipos TOP e LICENSE
+//			}									  // Tipos TOP e LICENSE
 		}
 		
 		
@@ -120,6 +120,9 @@ public class ActiveConnections {
 
 					
 //				if(servicosItemTipoAmb.get(s).getZbcBalanc().equals("S")) { // Pegar somente os servidores que forem balance
+																			// Obs: Se o servidor for do tipo MASTER + SLAVES, 
+																			// o MASTER não será passado no JSON, portanto
+																			// não será analisado
 																			
 								
 					aCJSonParser = new ActiveConnParserMon(ip, porta, environment);
