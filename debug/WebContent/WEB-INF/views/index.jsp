@@ -82,7 +82,7 @@
 	 			<li class="active"><a href="#leitura-tab-pane" data-toggle="tab">Leitura</a></li>
 			  	<li><a href="#monitoramento-tab-pane" data-toggle="tab">Monitoramento</a></li>
 			  	<li><a href="#escrita-tab-pane" data-toggle="tab">Escrita</a></li>
-<!-- 			  	<li><a href="#resultado-tab-pane" data-toggle="tab">Resultado</a></li> -->
+ 			  	<li><a href="#javaplugin-tab-pane" data-toggle="tab">Java Plug-in</a></li>
 			</ul>
 						
 			
@@ -99,6 +99,11 @@
 			  <div class="tab-pane" id="escrita-tab-pane">
 			  	  <textarea rows="23" cols="150" id="txt-area-escrita" readonly></textarea>
 			  </div>
+			  
+			  <div class="tab-pane" id="javaplugin-tab-pane">
+			  	  <textarea rows="23" cols="150" id="txt-area-javaplugin" readonly></textarea>
+			  </div>
+			  
 			  
 			</div>
 			

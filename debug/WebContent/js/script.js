@@ -384,6 +384,7 @@ function limparLogs() {
 	$("#txt-area-leitura").text("");
 	$("#txt-area-monit").text("");
 	$("#txt-area-escrita").text("");
+	$("#txt-area-javaplugin").text("");
 	
 }
 
@@ -399,6 +400,7 @@ function limparLogs() {
 
 
 var webSockMonit = new WebSocket("ws://172.18.0.149:8081/debug/webSockMonit");
+//var webSockMonit = new WebSocket("ws://172.18.0.150:8081/debug/webSockMonit");
 
 			
 webSockMonit.onmessage = function(message) {
@@ -412,6 +414,7 @@ function closeConnect() {
 
 
 var webSockRead = new WebSocket("ws://172.18.0.148:8081/debug/webSockRead");
+//var webSockRead = new WebSocket("ws://172.18.0.219:8081/debug/webSockRead");
 
 webSockRead.onmessage = function(message) {
 	document.getElementById("txt-area-leitura").textContent += message.data + "\n";
@@ -424,6 +427,7 @@ function closeConnect() {
 
 
 var webSockWrite = new WebSocket("ws://172.18.0.148:8081/debug/webSockWrite");
+//var webSockWrite = new WebSocket("ws://172.18.0.219:8081/debug/webSockWrite");
 
 webSockWrite.onmessage = function(message) {
 	document.getElementById("txt-area-escrita").textContent += message.data + "\n";
@@ -431,6 +435,21 @@ webSockWrite.onmessage = function(message) {
 			
 function closeConnect() {
 	webSockWrite.close();
+}
+
+
+
+
+var webSockJavaPlugin = new WebSocket("ws://172.18.0.149:8081/debug/websockPlugin3c");
+//var webSockJavaPlugin = new WebSocket("ws://172.18.0.150:8081/debug/websockPlugin3c");
+//var webSockJavaPlugin = new WebSocket("ws://localhost:8081/debug/websockPlugin3c");
+
+webSockJavaPlugin.onmessage = function(message) {
+	document.getElementById("txt-area-javaplugin").textContent += message.data + "\n";
+};
+			
+function closeConnect() {
+	webSockJavaPlugin.close();
 }
 
 

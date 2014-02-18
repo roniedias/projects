@@ -1,31 +1,38 @@
 package br.com.debugger3c.factory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class ConnectionFactory {
 	
 	public Connection get3CConnection() {
-
-		try {
-			
-			try {
-				
-				Class.forName("com.ibm.db2.jcc.DB2Driver");
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			
-			return DriverManager.getConnection("jdbc:db2://172.16.93.168:50000/DB3CPROD", "db2", "manager");
-		}
-		catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-		
-		
-		
-	}
+	
+		Connection result = null;
+	
+	    try {
+	    	Context initialContext = new InitialContext();
+	    	
+	    	DataSource datasource = (DataSource)initialContext.lookup("java:comp/env/jdbc/DB3CPROD");
+	    
+	    	if (datasource != null) {
+	    		result = datasource.getConnection();
+	    	}
+	    	else {
+	    		System.out.println("Falha durante o datasource lookup.");
+	    	}
+	    }
+	    catch ( NamingException e ) {
+	    	e.printStackTrace();
+	    }
+	    catch(SQLException e){
+	    	e.printStackTrace();
+	    }
+	    return result;
+	  }
 
 }

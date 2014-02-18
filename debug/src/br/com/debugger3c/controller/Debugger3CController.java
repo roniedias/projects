@@ -1,25 +1,23 @@
 package br.com.debugger3c.controller;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.com.debugger3c.dao.Dao3C;
 import br.com.debugger3c.model.Client3C;
-// import br.com.debugger3c.monit.Monit;
-
 import br.com.debugger3c.util.JSonMaker;
-// import br.com.totvs.java3C.plugin.Nagios3C;
+import br.com.debugger3c.util.JSonMakerMulti;
 
 
 @Controller
@@ -44,17 +42,8 @@ public class Debugger3CController {
 	protected Dao3C dao3c;
 	
 	
-	
 
-
-
-//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_17\\jre\\bin\\java.exe"; // localhost
-//	private static final String PATH_TO_JAVA = "C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe"; // 172.18.0.150
-//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_45\\jre\\bin\\java.exe"; // 172.18.0.149
-	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_51\\jre\\bin\\java.exe"; // 172.18.0.148
-
-//	private static final String JAR_FILE = "C:\\Users\\ronie.dias\\workspace\\debugger3c-spring\\WebContent\\WEB-INF\\lib\\3CNagiosPlugin.jar"; // localhost
-	private static final String JAR_FILE = "C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\lib\\3CNagiosPlugin.jar"; // Servers 172.18.0.149 e 150
+	OutputStreamWriter out;
 	
 	
 	public Debugger3CController() {
@@ -197,6 +186,33 @@ public class Debugger3CController {
 	
 	
 	
+	@RequestMapping("allEnvParamActiveInController.json")
+	public void getTodosParamAmbienteAtivosNoController(HttpServletRequest request, HttpServletResponse response) {
+
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("codigoCliente", codigoCliente);
+		hm.put("codigoAmbiente", codigoAmbiente);
+		hm.put("codigoEmpresa", codigoEmpresa);
+		hm.put("codigoTipoAmb", codigoTipoAmb);
+		hm.put("codTipoServico", codTipoServico);
+		hm.put("codigoProduto", codigoProduto);
+		
+		JSonMakerMulti jSonMakerMulti = new JSonMakerMulti(hm);
+		String json = jSonMakerMulti.getJSon();
+		
+	    response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        try {
+			response.getWriter().write(json);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}			
+		
+	}
+	
+	
+	
 	
 	@RequestMapping("executeMonit")
 	public void executeMonit(HttpServletRequest request, HttpServletResponse response) {
@@ -221,70 +237,45 @@ public class Debugger3CController {
 		codTipoServico = request.getParameter("codTipoServico"); 
 		codigoProduto = request.getParameter("codigoProduto");
 		
-		//monit();
 		monitExecutingJarFile();
-		
-		
-		
+			
 	}
 
 	
-	
-	
-	
-//	private void monit() {
-//		
-//		new Thread(new Runnable() {
-//			public void run() {
-//				new Nagios3C(codigoCliente, codigoEmpresa, codigoAmbiente, codigoTipoAmb, codTipoServico, codigoProduto);
-//			}
-//		}).start();
-//
-//	}
-	
-	
-	
-	
-	
-	// Método que efetua o monitoramento, propriamente dito
+		
 	private void monitExecutingJarFile() {
-		
-		
-		new Thread(new Runnable() {
-			public void run() {
 				
-				try {
-					
-					String[] comando = {PATH_TO_JAVA, "-jar", JAR_FILE, codigoCliente, codigoEmpresa, codigoAmbiente, codigoTipoAmb, codTipoServico, codigoProduto};
-					
-					Runtime rt = Runtime.getRuntime();
-					Process proc = null;
 				
-					proc = rt.exec(comando);
+		try {
 					
-					BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 			
-				    BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-			
-				    // lê a saída do comando (Saida padrao do comando)
+			// KPMG http://localhost:8081/debug/websockPlugin3c?codigoCliente=TEZE60&codigoEmpresa=00&codigoAmbiente=000051&codigoTipoAmb=01&codTipoServico=046&codigoProduto=000030
+			//AYMAN http://localhost:8081/debug/websockPlugin3c?codigoCliente=T87332&codigoEmpresa=00&codigoAmbiente=000070&codigoTipoAmb=01&codTipoServico=025&codigoProduto=000030
+//			URL url = new URL("http://localhost:8081/debug/websockPlugin3c?codigoCliente=" + codigoCliente + "&codigoEmpresa=" + codigoEmpresa + "&codigoAmbiente=" + codigoAmbiente + "&codigoTipoAmb=" + codigoTipoAmb + "&codTipoServico=" + codTipoServico + "&codigoProduto=" + codigoProduto);			
+	
+			URL url = new URL("http://172.18.0.149:8081/debug/websockPlugin3c?codigoCliente=" + codigoCliente + "&codigoEmpresa=" + codigoEmpresa + "&codigoAmbiente=" + codigoAmbiente + "&codigoTipoAmb=" + codigoTipoAmb + "&codTipoServico=" + codTipoServico + "&codigoProduto=" + codigoProduto);    
+		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    conn.setRequestMethod("POST");
+		    conn.setRequestProperty("Content-Type", "text/xml");
+
 				    
-				    String s = null;
-				    while ((s = stdInput.readLine()) != null) {
-				        System.out.println(s);
-				    }
+  		    //Rotina que obtém o retorno da ServletWebSocketPlugin3c
+			// ===================================================================================
+		    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    String inputLine;
+		            		            
+		    while ((inputLine = in.readLine()) != null) 
+		    	System.out.println(inputLine);
+
+		    in.close();
+		    // ===================================================================================
 				    
-				    // lê erros a partir do comando executado (Erro padrao do comando, se houver)
-				    
-				    while ((s = stdError.readLine()) != null) {
-				        System.out.println(s);
-				    }
-				}
-				catch (IOException e) {
-					e.printStackTrace();
-				}	
+		            
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}	
 				
-			}
-		}).start();
 
 	}
 	
