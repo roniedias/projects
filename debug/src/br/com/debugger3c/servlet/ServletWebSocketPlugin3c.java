@@ -65,57 +65,52 @@ public class ServletWebSocketPlugin3c extends WebSocketServlet {
 	private void executaJarFile() {		
 				
 		try {
-		
-			if(!(codigoCliente.equals("vazio") || codigoEmpresa.equals("vazio") || codigoAmbiente.equals("vazio") || codigoTipoAmb.equals("vazio") || codTipoServico.equals("vazio") || codigoProduto.equals("vazio"))) {
-				    	
-						
-				new Thread(new Runnable() {
-					
-					public void run() {
+				    					
+			new Thread(new Runnable() {
+				
+				public void run() {
 							
 							
-					    try {
+				    try {
 					    
 					    	
-						    String s = null;
+					    String s = null;
 		
 								
-							String[] comando = {PATH_TO_JAVA, "-jar", JAR_FILE, codigoCliente, codigoEmpresa, codigoAmbiente, codigoTipoAmb, codTipoServico, codigoProduto};
+						String[] comando = {PATH_TO_JAVA, "-jar", JAR_FILE, codigoCliente, codigoEmpresa, codigoAmbiente, codigoTipoAmb, codTipoServico, codigoProduto};
 								
-							Runtime rt = Runtime.getRuntime();
-							Process proc = null;
+						Runtime rt = Runtime.getRuntime();
+						Process proc = null;
 							
-							proc = rt.exec(comando);
+						proc = rt.exec(comando);
 								
-							BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+						BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 						
-						    BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+					    BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
 		
-						    // lê a saída do comando (Saida padrao do comando)				    
-						    while ((s = stdInput.readLine()) != null) {
-						    	sendStrToAll(s);
-						    }
+					    // lê a saída do comando (Saida padrao do comando)				    
+					    while ((s = stdInput.readLine()) != null) {
+					    	sendStrToAll(s);
+					    }
 							    
-						    // lê erros a partir do comando executado (Erro padrao do comando, se houver)
-						    while ((s = stdError.readLine()) != null) {
-						    	sendStrToAll(s);
-						    }		
+					    // lê erros a partir do comando executado (Erro padrao do comando, se houver)
+					    while ((s = stdError.readLine()) != null) {
+					    	sendStrToAll(s);
+					    }		
 							
-					}
-					catch (IOException e) {
-						e.printStackTrace();
-					}	
-				
+				    }
+				    catch (IOException e) {
+				    	e.printStackTrace();
+				    }	
+				   
 					    
-					    
-					}
-				}).start();
+				}
+			}).start();
 
 
-			}	
 		}
 		catch(NullPointerException e) {
-			//System.out.println("Valores vazios");
+		//System.out.println("Valores vazios");
 		}
 			
 		
