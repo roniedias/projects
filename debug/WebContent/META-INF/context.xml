@@ -1,7 +1,7 @@
 <Context>
 	<Resource name="jdbc/DB3CPROD" auth="Container" type="javax.sql.DataSource" 
 		username="db2" password="manager" driverClassName="com.ibm.db2.jcc.DB2Driver"
-		url="jdbc:db2://172.16.93.168:50000/DB3CPROD" maxActive="15" maxIdle="3"/>		
+		url="jdbc:db2://192.168.3.85:50000/DADOS3C" maxActive="15" maxIdle="3"/>		
 </Context>
 
 <!-- Produção:    192.168.3.85/DADOS3C -->
