@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,8 @@ import org.apache.catalina.websocket.MessageInbound;
 import org.apache.catalina.websocket.StreamInbound;
 import org.apache.catalina.websocket.WebSocketServlet;
 import org.apache.catalina.websocket.WsOutbound;
+
+import br.com.debugger3c.util.ConfigXmlParser;
 
 
 
@@ -32,17 +35,29 @@ public class ServletWebSocketPlugin3c extends WebSocketServlet {
 	private String codTipoServico;
 	private String codigoProduto;
 	
-	
-//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_17\\jre\\bin\\java.exe"; // localhost
-//	private static final String PATH_TO_JAVA = "C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe"; // 172.18.0.150
-	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_45\\jre\\bin\\java.exe"; // 172.18.0.149
-//	private static final String PATH_TO_JAVA = "C:\\Program Files\\Java\\jdk1.7.0_51\\jre\\bin\\java.exe"; // 172.18.0.148 e 219
 
-//	private static final String JAR_FILE = "C:\\Users\\ronie.dias\\workspace\\debug\\WebContent\\WEB-INF\\lib\\3CNagiosPlugin.jar"; // localhost
-	private static final String JAR_FILE = "C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\lib\\3CNagiosPlugin.jar"; // Servers 172.18.0.149 e 150
-
+	private static String PATH_TO_JAVA;
+	private static String JAR_FILE;
 
 	
+	public ServletWebSocketPlugin3c() {
+		
+		
+		
+		//localhost
+//		ConfigXmlParser cxp = new ConfigXmlParser("C:\\Users\\ronie.dias\\workspace\\debug\\WebContent\\WEB-INF\\debug-config.xml");
+		// Deploy
+		ConfigXmlParser cxp = new ConfigXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\debug-config.xml");
+		
+
+		PATH_TO_JAVA = cxp.getJdkPath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
+		
+		System.out.println("PATH_TO_JAVA: " + PATH_TO_JAVA);
+		
+		JAR_FILE = cxp.getJarPath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
+		
+		System.out.println("JAR_FILE: " + JAR_FILE);
+	}
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

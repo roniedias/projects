@@ -4,7 +4,6 @@ package br.com.debugger3c.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.debugger3c.dao.Dao3C;
 import br.com.debugger3c.model.Client3C;
+import br.com.debugger3c.util.ConfigXmlParser;
 import br.com.debugger3c.util.JSonMaker;
 import br.com.debugger3c.util.JSonMakerMulti;
 
@@ -41,9 +41,14 @@ public class Debugger3CController {
 
 	protected Dao3C dao3c;
 	
-	
+	private ConfigXmlParser cxp;
+	private String portaTomcat;
+	private String websocksMonitIp;
+	private String websocksPlugin3cIp;
+	private String websocksReadIp;
+	private String websocksWriteIp;
 
-	OutputStreamWriter out;
+	
 	
 	
 	public Debugger3CController() {
@@ -53,6 +58,18 @@ public class Debugger3CController {
 		dao3c = new Dao3C();
 		tiposAmbiente = new HashSet<String>();
 		codigosProdutos = new HashSet<String>();
+		
+		//localhost
+//		cxp = new ConfigXmlParser("C:\\Users\\ronie.dias\\workspace\\debug\\WebContent\\WEB-INF\\debug-config.xml");
+		// Deploy
+		cxp = new ConfigXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\debug-config.xml");
+	
+		portaTomcat = cxp.getPortaTomcat();
+		websocksMonitIp = cxp.getWebSockMonitIp();
+		websocksPlugin3cIp = cxp.getWebsockPlugin3cIp();
+		websocksReadIp = cxp.getWebSockReadIp();
+		websocksWriteIp = cxp.getWebSockWriteIp();
+		
 	}
 	
 	
@@ -62,6 +79,33 @@ public class Debugger3CController {
 		return "index";
 	}
 
+	
+	@RequestMapping("websocketIPsAndTomcatPort.json")
+	public void getWbsocketIPsAndTomcatPort(HttpServletRequest request, HttpServletResponse response) {
+		
+		HashMap<String, String> hs = new HashMap<String, String>();
+		hs.put("portaTomcat", portaTomcat);
+		hs.put("websocksMonitIp", websocksMonitIp);
+		hs.put("websocksPlugin3cIp", websocksPlugin3cIp);
+		hs.put("websocksReadIp", websocksReadIp);
+		hs.put("websocksWriteIp", websocksWriteIp);
+		
+		JSonMakerMulti jSonMakerMulti = new JSonMakerMulti(hs);
+		
+		String json = jSonMakerMulti.getJSon();
+		
+	    response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        try {
+			response.getWriter().write(json);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+	
 	
 	@RequestMapping("allClients.json")
 	public void getAllClients(HttpServletRequest request, HttpServletResponse response) {
@@ -251,9 +295,11 @@ public class Debugger3CController {
 			
 			// KPMG http://localhost:8081/debug/websockPlugin3c?codigoCliente=TEZE60&codigoEmpresa=00&codigoAmbiente=000051&codigoTipoAmb=01&codTipoServico=046&codigoProduto=000030
 			//AYMAN http://localhost:8081/debug/websockPlugin3c?codigoCliente=T87332&codigoEmpresa=00&codigoAmbiente=000070&codigoTipoAmb=01&codTipoServico=025&codigoProduto=000030
-//			URL url = new URL("http://localhost:8081/debug/websockPlugin3c?codigoCliente=" + codigoCliente + "&codigoEmpresa=" + codigoEmpresa + "&codigoAmbiente=" + codigoAmbiente + "&codigoTipoAmb=" + codigoTipoAmb + "&codTipoServico=" + codTipoServico + "&codigoProduto=" + codigoProduto);			
-	
-			URL url = new URL("http://172.18.0.149:8081/debug/websockPlugin3c?codigoCliente=" + codigoCliente + "&codigoEmpresa=" + codigoEmpresa + "&codigoAmbiente=" + codigoAmbiente + "&codigoTipoAmb=" + codigoTipoAmb + "&codTipoServico=" + codTipoServico + "&codigoProduto=" + codigoProduto);    
+//			URL url = new URL("http://localhost:8081/debug/websockPlugin3c?codigoCliente=" + codigoCliente + "&codigoEmpresa=" + codigoEmpresa + "&codigoAmbiente=" + codigoAmbiente + "&codigoTipoAmb=" + codigoTipoAmb + "&codTipoServico=" + codTipoServico + "&codigoProduto=" + codigoProduto);
+			
+			
+			String uri = "http://" + websocksPlugin3cIp + ":" + portaTomcat + "/debug/websockPlugin3c?codigoCliente=" + codigoCliente + "&codigoEmpresa=" + codigoEmpresa + "&codigoAmbiente=" + codigoAmbiente + "&codigoTipoAmb=" + codigoTipoAmb + "&codTipoServico=" + codTipoServico + "&codigoProduto=" + codigoProduto;
+			URL url = new URL(uri.replaceAll("\\s", ""));    
 		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		    conn.setRequestMethod("POST");
 		    conn.setRequestProperty("Content-Type", "text/xml");

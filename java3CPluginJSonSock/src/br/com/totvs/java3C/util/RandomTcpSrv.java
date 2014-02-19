@@ -21,22 +21,23 @@ public class RandomTcpSrv {
 		
 		geradorAleatorioTcpSrv = new Random();
 		
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("src\\br\\com\\totvs\\java3C\\util\\tcpServersTst.xml", nodeName);
 
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\Users\\ronie.dias\\workspace\\java3CPluginJSonSock\\src\\br\\com\\totvs\\java3C\\util\\tcpServersTst.xml", nodeName); // // Configuração para o debug, em localhost
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\tcpServers.xml", nodeName); // Configuração para o debug, nos servidores 172.18.0.149 e 150
-				
+
 	
+		// Configuração para o debug, em localhost
+//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\Users\\ronie.dias\\workspace\\debug\\WebContent\\WEB-INF\\tcp-servers.xml", nodeName);
 		
+		// Configuração para o debug, nos servidores 172.18.0.149 e 150
+//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\tcp-servers.xml", nodeName); 
+		
+		
+	
+		//Teste (localhost)
+//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("src\\br\\com\\totvs\\java3C\\util\\tcpServersTst.xml", nodeName);
 		
 		// Producao
 		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser("/usr/lib/nagios/plugins/tcpServers.xml", nodeName); // Configuração para deploy nos pollers
 
-		
-		// Nao em funcionamento hoje
-//		String currentDir = System.getProperty("user.dir"); // Obtém o diretório atual
-//		TcpSrvsXmlParser tsxp = new TcpSrvsXmlParser(currentDir + "/tcpServers.xml", nodeName);
-		
 		
 		
 		

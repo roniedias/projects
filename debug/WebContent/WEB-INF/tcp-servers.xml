@@ -18,17 +18,36 @@
 		<port>9199</port>
 		<active>1</active>
 	</tcpSrvMonit>
-
+	
+<!-- 	<tcpSrvMonit> -->
+<!-- 		<ip>172.18.0.150</ip> -->
+<!-- 		<port>9199</port> -->
+<!-- 		<active>1</active> -->
+<!-- 	</tcpSrvMonit> -->
+	
 	<tcpSrvRead>
 		<ip>172.18.0.148</ip>
 		<port>9198</port>
 		<active>1</active>
 	</tcpSrvRead>
+
+<!-- 	<tcpSrvRead> -->
+<!-- 		<ip>172.18.0.219</ip> -->
+<!-- 		<port>9198</port> -->
+<!-- 		<active>1</active> -->
+<!-- 	</tcpSrvRead> -->
 	
 	<tcpSrvWrite>
 		<ip>172.18.0.148</ip>
 		<port>9199</port>
 		<active>1</active>
 	</tcpSrvWrite>
+	
+<!-- 	<tcpSrvWrite> -->
+<!-- 		<ip>172.18.0.219</ip> -->
+<!-- 		<port>9199</port> -->
+<!-- 		<active>1</active> -->
+<!-- 	</tcpSrvWrite> -->
+	
 </tcpSrvs>
 	
