@@ -6,6 +6,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import org.apache.catalina.websocket.WebSocketServlet;
 import org.apache.catalina.websocket.MessageInbound;
 import org.apache.catalina.websocket.WsOutbound;
 
+import br.com.debugger3c.util.ConfigXmlParser;
+
 
 @WebServlet(urlPatterns="/webSockWrite")
 public class ServletWebSocketWrite extends WebSocketServlet {
@@ -23,14 +26,20 @@ public class ServletWebSocketWrite extends WebSocketServlet {
 	
 	private static ArrayList<MsgInbound> msgInboundList = new ArrayList<MsgInbound>();
 	
-	private static final String FILE_PATH = "D:\\3CLOGS\\totvsconsole_3C_TCP_READ_AND_WRITE_9099.log";
-	private static final File FILE = new File(FILE_PATH); 
+	private ConfigXmlParser cxp;
+	private static String FILE_PATH;
+	private static File FILE; 
 	private long length;
-	private long pointer = FILE.length();;
+	private long pointer;
 	
 
 	
 	public ServletWebSocketWrite() {
+		
+		cxp = new ConfigXmlParser();
+		FILE_PATH = cxp.getWebsockWriteFilePath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
+		FILE = new File(FILE_PATH);
+		pointer = FILE.length();
 		
 		new Thread(new Runnable() {
 

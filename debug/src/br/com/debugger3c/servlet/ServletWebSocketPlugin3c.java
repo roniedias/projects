@@ -42,21 +42,12 @@ public class ServletWebSocketPlugin3c extends WebSocketServlet {
 	
 	public ServletWebSocketPlugin3c() {
 		
+				
+		ConfigXmlParser cxp = new ConfigXmlParser();
 		
-		
-		//localhost
-//		ConfigXmlParser cxp = new ConfigXmlParser("C:\\Users\\ronie.dias\\workspace\\debug\\WebContent\\WEB-INF\\debug-config.xml");
-		// Deploy
-		ConfigXmlParser cxp = new ConfigXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\debug-config.xml");
-		
-
-		PATH_TO_JAVA = cxp.getJdkPath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
-		
-		System.out.println("PATH_TO_JAVA: " + PATH_TO_JAVA);
-		
+		PATH_TO_JAVA = cxp.getJrePath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
 		JAR_FILE = cxp.getJarPath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
 		
-		System.out.println("JAR_FILE: " + JAR_FILE);
 	}
 	
 	

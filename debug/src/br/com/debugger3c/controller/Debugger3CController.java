@@ -59,10 +59,7 @@ public class Debugger3CController {
 		tiposAmbiente = new HashSet<String>();
 		codigosProdutos = new HashSet<String>();
 		
-		//localhost
-//		cxp = new ConfigXmlParser("C:\\Users\\ronie.dias\\workspace\\debug\\WebContent\\WEB-INF\\debug-config.xml");
-		// Deploy
-		cxp = new ConfigXmlParser("C:\\apache-tomcat-7.0.47\\webapps\\debug\\WEB-INF\\debug-config.xml");
+		cxp = new ConfigXmlParser();
 	
 		portaTomcat = cxp.getPortaTomcat();
 		websocksMonitIp = cxp.getWebSockMonitIp();

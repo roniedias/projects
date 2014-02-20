@@ -1,48 +1,67 @@
 <debug-config>
 	
 	<!-- localhost -->
-<!-- 		<jdk-path>C:\Program Files\Java\jdk1.7.0_17\jre\bin\java.exe</jdk-path> -->
-<!-- 		<jar-path>C:\Users\ronie.dias\workspace\debug\WebContent\WEB-INF\lib\3CNagiosPluginLocal.jar</jar-path> -->
-<!-- 		<porta-tomcat>8081</porta-tomcat> -->
-<!-- 		<ip-websock-monit>172.18.0.149</ip-websock-monit> -->
-<!-- 		<ip-websock-plugin3c>172.18.0.149</ip-websock-plugin3c> -->
-<!-- 		<ip-websock-read>172.18.0.148</ip-websock-read> -->
-<!-- 		<ip-websock-write>172.18.0.148</ip-websock-write> -->
-	
+<!-- 	<jre-path>C:\Program Files\Java\jdk1.7.0_17\jre\bin\java.exe</jre-path> -->
+<!-- 	<jar-path>C:\Users\ronie.dias\workspace\debug\WebContent\WEB-INF\lib\3CNagiosPluginLocal.jar</jar-path> -->
+<!-- 	<porta-tomcat>8081</porta-tomcat> -->
+<!-- 	<ip-websock-monit>172.18.0.149</ip-websock-monit> -->
+<!-- 	<ip-websock-plugin3c>172.18.0.149</ip-websock-plugin3c> -->
+<!-- 	<ip-websock-read>172.18.0.148</ip-websock-read> -->
+<!-- 	<ip-websock-write>172.18.0.148</ip-websock-write> -->
+<!-- 	<file-path-websock-read>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9098.log</file-path-websock-read> -->
+<!-- 	<file-path-websock-monit>D:\3CLOGS\totvsconsole_TCP_3CMONITPRO_9099.log</file-path-websock-monit> -->
+<!-- 	<file-path-websock-write>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9099.log</file-path-websock-write> -->
+		
 	<!-- 172.18.0.149 -->
-	<jdk-path>C:\Program Files\Java\jdk1.7.0_45\jre\bin\java.exe</jdk-path>
+	<jre-path>C:\Program Files\Java\jdk1.7.0_45\jre\bin\java.exe</jre-path>
 	<jar-path>C:\apache-tomcat-7.0.47\webapps\debug\WEB-INF\lib\3CNagiosPluginDeploy.jar</jar-path>
 	<porta-tomcat>8081</porta-tomcat>
 	<ip-websock-monit>172.18.0.149</ip-websock-monit>
 	<ip-websock-plugin3c>172.18.0.149</ip-websock-plugin3c>
 	<ip-websock-read>172.18.0.148</ip-websock-read>
 	<ip-websock-write>172.18.0.148</ip-websock-write>
+	<file-path-websock-read>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9098.log</file-path-websock-read>
+	<file-path-websock-monit>D:\3CLOGS\totvsconsole_TCP_3CMONITPRO_9099.log</file-path-websock-monit>
+	<file-path-websock-write>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9099.log</file-path-websock-write>
+
 		
 	<!-- 172.18.0.148 -->
-<!-- 	<jdk-path>C:\Program Files\Java\jdk1.7.0_51\jre\bin\java.exe</jdk-path> -->
+<!-- 	<jre-path>C:\Program Files\Java\jdk1.7.0_51\jre\bin\java.exe</jre-path> -->
 <!-- 	<jar-path>C:\apache-tomcat-7.0.47\webapps\debug\WEB-INF\lib\3CNagiosPluginDeploy.jar</jar-path> -->
 <!-- 	<porta-tomcat>8081</porta-tomcat> -->
 <!-- 	<ip-websock-monit>172.18.0.149</ip-websock-monit> -->
 <!-- 	<ip-websock-plugin3c>172.18.0.149</ip-websock-plugin3c> -->
 <!-- 	<ip-websock-read>172.18.0.148</ip-websock-read> -->
 <!-- 	<ip-websock-write>172.18.0.148</ip-websock-write> -->
+<!-- 	<file-path-websock-read>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9098.log</file-path-websock-read> -->
+<!-- 	<file-path-websock-monit>D:\3CLOGS\totvsconsole_TCP_3CMONITPRO_9099.log</file-path-websock-monit> -->
+<!-- 	<file-path-websock-write>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9099.log</file-path-websock-write> -->
+
 	
 	 <!-- 172.18.0.150 --> 
-<!-- 	<jdk-path>C:\Program Files (x86)\Java\jre7\bin\java.exe</jdk-path> -->
+<!-- 	<jre-path>C:\Program Files (x86)\Java\jre7\bin\java.exe</jre-path> -->
 <!-- 	<jar-path>C:\apache-tomcat-7.0.47\webapps\debug\WEB-INF\lib\3CNagiosPluginDeploy.jar</jar-path> -->
 <!-- 	<porta-tomcat>8081</porta-tomcat> -->
 <!-- 	<ip-websock-monit>172.18.0.150</ip-websock-monit> -->
 <!-- 	<ip-websock-plugin3c>172.18.0.150</ip-websock-plugin3c> -->
 <!-- 	<ip-websock-read>172.18.0.219</ip-websock-read> -->
 <!-- 	<ip-websock-write>172.18.0.219</ip-websock-write> -->
+<!-- 	<file-path-websock-read>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9098.log</file-path-websock-read> -->
+<!-- 	<file-path-websock-monit>D:\3CLOGS\totvsconsole_TCP_3CMONITPRO_9099.log</file-path-websock-monit> -->
+<!-- 	<file-path-websock-write>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9099.log</file-path-websock-write> -->
+
 	
 	 <!-- 172.18.0.219 --> 
-<!-- 	<jdk-path>C:\Program Files\Java\jdk1.7.0_51\jre\\bin\java.exe</jdk-path> -->
+<!-- 	<jre-path>C:\Program Files\Java\jdk1.7.0_51\jre\bin\java.exe</jre-path> -->
 <!-- 	<jar-path>C:\apache-tomcat-7.0.47\webapps\debug\WEB-INF\lib\3CNagiosPluginDeploy.jar</jar-path> -->
 <!-- 	<porta-tomcat>8081</porta-tomcat> -->
 <!-- 	<ip-websock-monit>172.18.0.150</ip-websock-monit> -->
 <!-- 	<ip-websock-plugin3c>172.18.0.150</ip-websock-plugin3c> -->
 <!-- 	<ip-websock-read>172.18.0.219</ip-websock-read> -->
 <!-- 	<ip-websock-write>172.18.0.219</ip-websock-write> -->
+<!-- 	<file-path-websock-read>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9098.log</file-path-websock-read> -->
+<!-- 	<file-path-websock-monit>D:\3CLOGS\totvsconsole_TCP_3CMONITPRO_9099.log</file-path-websock-monit> -->
+<!-- 	<file-path-websock-write>D:\3CLOGS\totvsconsole_3C_TCP_READ_AND_WRITE_9099.log</file-path-websock-write> -->
+
 
 </debug-config>
