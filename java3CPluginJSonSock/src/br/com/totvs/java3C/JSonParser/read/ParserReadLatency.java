@@ -28,6 +28,8 @@ public class ParserReadLatency {
 		
 		String readLatencyStr = nomeOperacao + "#" + codAmbiente + "#" + codTipoAmbiente + "#" + codProduto + "#\0";
 		
+//		System.out.println("Dados para leitura (String): " + readLatencyStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(readLatencyStr, "tcpSrvRead");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

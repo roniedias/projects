@@ -20,6 +20,8 @@ public class SigamatInfoParserMon {
 			
 		String sigamatInfoStr = "SIGAMATINFO#" + ip + "#" + porta + "#" + ambiente + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + sigamatInfoStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(sigamatInfoStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

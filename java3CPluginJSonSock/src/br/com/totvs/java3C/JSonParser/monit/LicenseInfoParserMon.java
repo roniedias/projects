@@ -24,6 +24,8 @@ public class LicenseInfoParserMon {
 
 		String licenseInfoStr = "LICENSEINFO#" + ip + "#" + porta + "#" + ambiente + "#" + caminho + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + licenseInfoStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(licenseInfoStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

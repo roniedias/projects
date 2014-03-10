@@ -22,6 +22,8 @@ public class DiskSpaceParserMon {
 
 		String diskSpaceStr = "DISKSPACE#" + ip + "#" + porta + "#" + ambiente + "#" + caminho + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + diskSpaceStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(diskSpaceStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

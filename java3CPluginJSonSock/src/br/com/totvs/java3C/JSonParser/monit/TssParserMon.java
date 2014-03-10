@@ -20,6 +20,8 @@ public class TssParserMon {
 		
 		String tssInfoStr = "TSSINFO#" + ip + "#" + porta + "#" + alias + "#" + database + "#" + cnpj + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + tssInfoStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(tssInfoStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

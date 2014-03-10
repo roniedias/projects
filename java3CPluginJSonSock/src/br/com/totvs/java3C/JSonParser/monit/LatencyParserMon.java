@@ -44,6 +44,8 @@ public class LatencyParserMon {
 		
 		String latencyStr = "LATENCY#" + servers.size() + srvs + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + latencyStr);
+		
 
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(latencyStr, "tcpSrvMonit");
 		tcpConnFactory.execute();

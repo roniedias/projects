@@ -28,6 +28,8 @@ public class AvailabilityParserMon {
 		
 		String availabilityConnStr = "AVAILABILITY#" + ip + "#" + porta + "#" + ambiente + "#" + empresaFilial + "#" + tipo + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + availabilityConnStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(availabilityConnStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

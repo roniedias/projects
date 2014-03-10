@@ -30,6 +30,8 @@ public class ParserRead {
 		
 		String readStr = nomeOperacao + "#" + codAmbiente + "#" + codTipoAmbiente + "#" + codProduto + "#\0";
 		
+//		System.out.println("Dados para leitura (String): " + readStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(readStr, "tcpSrvRead");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

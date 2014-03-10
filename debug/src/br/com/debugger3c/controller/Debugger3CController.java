@@ -107,10 +107,11 @@ public class Debugger3CController {
 	@RequestMapping("allClients.json")
 	public void getAllClients(HttpServletRequest request, HttpServletResponse response) {
 		
-		Dao3C dao = new Dao3C();
+		//Dao3C dao = new Dao3C();
 		
 		ArrayList<Client3C> clients3C = new ArrayList<Client3C>();
-		clients3C = dao.getTodosOsClientes3C();
+		//clients3C = dao.getTodosOsClientes3C();
+		clients3C = dao3c.getTodosOsClientes3C();
 		
 		String allClientsJson = "["; 
 

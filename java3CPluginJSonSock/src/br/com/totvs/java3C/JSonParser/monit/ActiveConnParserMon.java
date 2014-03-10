@@ -21,6 +21,8 @@ public class ActiveConnParserMon {
 		
 		String activeConnStr = "ACTIVECONNECTIONS#" + ip + "#" + porta + "#" + ambiente + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + activeConnStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(activeConnStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

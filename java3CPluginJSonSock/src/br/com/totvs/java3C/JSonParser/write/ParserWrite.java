@@ -24,6 +24,9 @@ public class ParserWrite {
 		
 		String writeStr = nomeOperacao + "#" + zcaCodAmb + "#" + zcaTipAmb + "#" + zcaItem + "#" + zcaParam + "#" + zcaResult + "#" + zcaMemo + "#\0";
 		
+//		System.out.println("Dados para escrita (String): " + writeStr);
+//		System.out.println("\n");
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(writeStr, "tcpSrvWrite");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

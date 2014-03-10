@@ -26,6 +26,8 @@ public class PerformanceParserMon {
 		
 		String performanceStr = "PERFORMANCE#" + ip + "#" + porta + "#" + ambiente + "#" + empresaFilial + "#" + ipLicense + "#" + portaLicense + "#" + ambienteLicense + "#\0";
 		
+//		System.out.println("Dados para monitoramento (String): " + performanceStr);
+		
 		TcpConnFactory tcpConnFactory = new TcpConnFactory(performanceStr, "tcpSrvMonit");
 		tcpConnFactory.execute();
 		isTcpSrvConn = tcpConnFactory.tcpSrvConn();

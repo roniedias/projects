@@ -35,9 +35,10 @@ public class ServletWebSocketPlugin3c extends WebSocketServlet {
 	private String codTipoServico;
 	private String codigoProduto;
 	
-
 	private static String PATH_TO_JAVA;
 	private static String JAR_FILE;
+	
+	private String websockPlugin3cIp;
 
 	
 	public ServletWebSocketPlugin3c() {
@@ -47,6 +48,8 @@ public class ServletWebSocketPlugin3c extends WebSocketServlet {
 		
 		PATH_TO_JAVA = cxp.getJrePath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
 		JAR_FILE = cxp.getJarPath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
+		
+		websockPlugin3cIp = cxp.getWebsockPlugin3cIp();
 		
 	}
 	
@@ -159,7 +162,7 @@ public class ServletWebSocketPlugin3c extends WebSocketServlet {
 			this.instanceOutbound = outbound;
 			msgInboundList.add(this);
 			try {
-				outbound.writeTextMessage(CharBuffer.wrap("*** GERACAO DE LOG INICIADA ***"));
+				outbound.writeTextMessage(CharBuffer.wrap("*** GERACAO DE LOG INICIADA. SERVIDOR: " + websockPlugin3cIp + " ***"));
 			}
 			catch(IOException e) {
 				e.printStackTrace();

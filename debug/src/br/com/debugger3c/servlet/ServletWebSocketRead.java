@@ -31,6 +31,7 @@ public class ServletWebSocketRead extends WebSocketServlet {
 	private static File FILE; 
 	private long length;
 	private long pointer;
+	private String webSockReadIp;
 	
 
 	
@@ -40,6 +41,7 @@ public class ServletWebSocketRead extends WebSocketServlet {
 		FILE_PATH = cxp.getWebsockReadFilePath().replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
 		FILE = new File(FILE_PATH);
 		pointer = FILE.length();
+		webSockReadIp = cxp.getWebSockReadIp();
 
 		new Thread(new Runnable() {
 
@@ -138,7 +140,7 @@ public class ServletWebSocketRead extends WebSocketServlet {
 			this.instanceOutbound = outbound;
 			msgInboundList.add(this);
 			try {
-				outbound.writeTextMessage(CharBuffer.wrap("*** GERACAO DE LOG INICIADA ***"));
+				outbound.writeTextMessage(CharBuffer.wrap("*** GERACAO DE LOG INICIADA. SERVIDOR: " + webSockReadIp + " ***"));
 			}
 			catch(IOException e) {
 				e.printStackTrace();
