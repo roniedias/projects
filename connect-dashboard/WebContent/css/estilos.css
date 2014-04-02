@@ -1,0 +1,216 @@
+#header {
+/*    background:#303030; */
+   background: #428BCA;
+/*    width:100%; */
+    height:70px;    
+}
+
+
+
+#header table {
+	width: 98%;
+	height: 100%;
+}
+
+
+#header td { 
+	width: 50%; 
+}
+
+
+#logo-img {
+	cursor: pointer;
+	padding-left: 50px;	
+}
+
+
+#login-group-div {
+	margin-left:auto; 
+	margin-right:0;	
+}
+
+
+#form-login {
+	padding-right: 60px; 
+}
+
+
+#div-executar {
+	padding-top: 30px;
+	text-align: right
+}
+
+#div-section {
+	height: 60%;
+}
+
+
+#section {
+	padding-top: 10px;
+}
+
+
+/* #div-footer { */
+/* 	height: 20%; */
+/* } */
+
+/* #footer { */
+/* 	position:absolute; */
+/* 	bottom:0; */
+/* 	width:100%; */
+/* 	height:40px; */
+/* 	background:#303030; */
+/* } */
+
+
+#panel-online, #panel-graficos, #panel-apresentacao-graficos, #panel-relatorios  {
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	border: none;
+}
+
+
+#panel-body-online {
+	overflow: hidden;
+	overflow-x: auto;
+	overflow-y: auto;
+	height: 600px;
+	margin-top: 10px;	
+}
+
+
+#panel-body-relatorios, #panel-body-apresentacao-graficos   {
+	overflow: hidden;
+	overflow-x: auto;
+	overflow-y: auto;
+	height: 600px;
+	margin-top: 10px;	
+}
+
+
+#panel-body-graficos {
+	overflow: hidden;
+	overflow-x: auto;
+	overflow-y: auto;
+	height: 565px;
+	margin-top: 10px;	
+}
+
+
+
+
+
+.div-btn-atualizar-salas-online {
+	background-color: #F6F4F0;
+	padding-left: 43%; 
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+.div-tbl-pesquisa-salas table {
+	background-color: #F6F4F0;
+	table-layout: fixed; 
+ 	width: 100% 
+	
+}
+
+
+td.pesquisa-salas-nome {
+	width: 20%;
+	padding-left: 25px;
+}
+
+td.pesquisa-salas-data-inicio {
+	width: 20%;
+}
+
+td.pesquisa-salas-data-fim {
+	width: 20%;
+}
+
+td.pesquisa-salas-input {
+	width: 40%;
+  	padding-bottom: 30px; 
+}
+
+.div-dropdown-btn-relatorios {
+	background-color: #F6F4F0;
+}
+
+.div-dropdown-btn-relatorios div {
+	background-color: #F6F4F0;
+ 	padding-left: 75%;  
+	padding-top: 10px;
+	padding-bottom: 10px;	
+}
+
+.btn-group ul {	 
+	left: 80%;
+}
+
+#panel-body-relatorios table {
+	width: 100%;
+}
+
+
+
+#heading-relatorios table {
+	width: 100%;
+}
+
+
+td.relatorios-nome {
+	width: 10%;
+/* 	padding-left: 25px; */
+}
+
+
+td.relatorios-print-img {
+	width: 90%;
+}
+
+
+
+.div-dropdown-btn-relatorios table {
+	width: 100%;
+}
+
+
+td.relat-dropdown-td {
+	width: 55%
+}
+
+td.relat-imgmail-td {
+	width: 45%
+}
+
+
+.fig-mail-geral-relat img {
+	padding-left: 10%;
+	cursor: pointer;
+}
+
+
+.div-img-charts table {
+	width: 100%;
+}
+
+
+td.tdChart1 {padding: 5%;}
+td.tdChart2 {padding: 5%;}
+td.tdChart3 {padding: 5%;}
+td.tdChart4 {padding: 5%;}
+td.tdChart5 {padding: 5%;}
+td.tdChart6 {padding: 5%;}
+td.tdChart7 {padding: 5%;}
+td.tdChart8 {padding: 5%;}
+td.tdChart9 {padding: 5%;}
+
+
+
+.div-img-charts img:hover {
+	-webkit-transform: scale(1.0) rotate(1deg);
+    transform: scale(1.0) rotate(1deg);
+}

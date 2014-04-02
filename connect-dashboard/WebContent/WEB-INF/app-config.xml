@@ -1,0 +1,5 @@
+<app-config>
+	<url-connect>
+		http://ocean.totvs.com.br
+	</url-connect>
+</app-config>

@@ -1,0 +1,56 @@
+<!-- <context> -->
+<!-- 	<Resource name="jdbc/breeze"  -->
+<!-- 	              auth="Container"  -->
+<!-- 	              type="javax.sql.DataSource"  -->
+<!-- 	              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" -->
+<!-- 	              testWhileIdle="true" -->
+<!-- 	              testOnBorrow="true" -->
+<!-- 	              testOnReturn="false" -->
+<!-- 	              validationQuery="SELECT 1" -->
+<!-- 	              validationInterval="30000" -->
+<!-- 	              timeBetweenEvictionRunsMillis="30000" -->
+<!-- 	              maxActive="100"  -->
+<!-- 	              minIdle="10"  -->
+<!-- 	              maxWait="10000"  -->
+<!-- 	              initialSize="10" -->
+<!-- 	              removeAbandonedTimeout="60" -->
+<!-- 	              removeAbandoned="true" -->
+<!-- 	              logAbandoned="true" -->
+<!-- 	              minEvictableIdleTimeMillis="30000"  -->
+<!-- 	              jmxEnabled="true" -->
+<!-- 	              jdbcInterceptors= -->
+<!-- 	"org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer" -->
+<!-- 	              username="connect"  -->
+<!-- 	              password="totvs"  -->
+<!-- 	              driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
+<!-- 	              url="jdbc:sqlserver://172.16.90.89:1433;Database=breeze"/> -->
+<!-- </context> -->
+
+
+<!-- <Context> -->
+<!-- 	<Resource name="jdbc/breeze" auth="Container" type="javax.sql.DataSource"  -->
+<!-- 		username="connect" password="totvs" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
+<!-- 		url="jdbc:sqlserver://172.16.90.89:1433;Database=breeze" maxActive="15" maxIdle="3"/>		 -->
+<!-- </Context> -->
+
+
+<Context>
+	<Resource name="jdbc/breeze" auth="Container" type="javax.sql.DataSource" 
+          testWhileIdle="true" testOnBorrow="true"
+          testOnReturn="false"
+          validationQuery="SELECT 1"
+          validationInterval="30000"
+          timeBetweenEvictionRunsMillis="30000"
+          maxActive="100"
+          minIdle="10"
+          maxWait="10000"
+          initialSize="10"
+          removeAbandonedTimeout="60"
+          removeAbandoned="true"
+          logAbandoned="true"
+          minEvictableIdleTimeMillis="30000"
+          username="connect"
+          password="totvs"
+          driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+          url="jdbc:sqlserver://172.16.90.89:1433;Database=breeze"/>
+</Context>
