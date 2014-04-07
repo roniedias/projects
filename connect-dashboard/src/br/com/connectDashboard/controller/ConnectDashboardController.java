@@ -21,6 +21,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -66,7 +67,7 @@ public class ConnectDashboardController {
 	
 		
 	@RequestMapping("efetuaLogin")
-	public String efetuaLogin(HttpServletRequest request, HttpSession session) {
+	public ModelAndView efetuaLogin(HttpServletRequest request, HttpSession session) {
 		
 		String usr = request.getParameter("input-login-usuario");
 		String pass = request.getParameter("input-login-senha");
@@ -116,17 +117,24 @@ public class ConnectDashboardController {
 			e.printStackTrace();
 		}
 
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("statusCode", statusCode);
 		
-        if(statusCode.equals("ok")) {
-        	        	
+		
+        if(statusCode.equals("ok")) {   	
+        	
         	session.setAttribute("usuarioLogado", usr);
-        	return "index";
+       
+            mav.setViewName("index");
+            
         }
         else {
-        	return "redirect:login";
+        	
+            mav.setViewName("redirect:login");
+        	
         }
 
-
+        return mav;
 		
 	}
 	

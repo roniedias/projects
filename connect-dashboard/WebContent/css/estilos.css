@@ -1,7 +1,5 @@
 #header {
-/*    background:#303030; */
    background: #428BCA;
-/*    width:100%; */
     height:70px;    
 }
 
@@ -48,19 +46,6 @@
 #section {
 	padding-top: 10px;
 }
-
-
-/* #div-footer { */
-/* 	height: 20%; */
-/* } */
-
-/* #footer { */
-/* 	position:absolute; */
-/* 	bottom:0; */
-/* 	width:100%; */
-/* 	height:40px; */
-/* 	background:#303030; */
-/* } */
 
 
 #panel-online, #panel-graficos, #panel-apresentacao-graficos, #panel-relatorios  {
@@ -163,7 +148,6 @@ td.pesquisa-salas-input {
 
 td.relatorios-nome {
 	width: 10%;
-/* 	padding-left: 25px; */
 }
 
 
@@ -193,24 +177,65 @@ td.relat-imgmail-td {
 }
 
 
-.div-img-charts table {
-	width: 100%;
+
+#body-login {
+	background: #428BCA;
+	
+}
+
+#panel-login {
+	
+	width: 400px;
+	margin-top: 12%;
+	margin-left: 35%;
+ 	background: #FFFFFF;
+ 	box-shadow: 10px 10px 5px #888888;
+ 	border: 1px solid rgba(0, 0, 0, .5);
+	border-radius:25px;   
 }
 
 
-td.tdChart1 {padding: 5%;}
-td.tdChart2 {padding: 5%;}
-td.tdChart3 {padding: 5%;}
-td.tdChart4 {padding: 5%;}
-td.tdChart5 {padding: 5%;}
-td.tdChart6 {padding: 5%;}
-td.tdChart7 {padding: 5%;}
-td.tdChart8 {padding: 5%;}
-td.tdChart9 {padding: 5%;}
+#lbl-login {
+	color: #428BCA;
+}
 
 
+#tbl-login {
+	width: 100%
+}
 
-.div-img-charts img:hover {
-	-webkit-transform: scale(1.0) rotate(1deg);
-    transform: scale(1.0) rotate(1deg);
+
+td.td-image-logo {
+	text-align: center;
+	padding-top: 2em;
+}
+
+
+td.td-input-usr {
+	text-align: center;
+	padding-top: 5em;
+}
+
+
+td.td-input-pass {
+	text-align: center;
+	padding-top: 1em;
+}
+
+
+td.td-btn-sbmt {
+	padding-top: 2em;
+	padding-bottom: 2em;
+	text-align: center;
+}
+
+
+td.td-lbl-login {
+	text-align: center;
+	padding-bottom: 5em;
+}
+
+#btn-login {
+/* 	display: block;  */
+/* 	width: 100% */
 }

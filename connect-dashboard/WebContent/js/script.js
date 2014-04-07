@@ -5,28 +5,34 @@
 	var tpRelatorio; // Variável global em uso pela função geraRelatorioSalas().
 	var tipoRelatorioGlobal; // Variável global em uso pela função enviarEmailHostsSala().
 	var relatNomeSalaGlobal; // Variável global em uso pela função enviarEmailHostsSala().
+
 	
-	var formLogin; // Para exclusão dos inputs + botão de login e inclusão do ahref de logout
+	
 	
 // =============================================================================================	
 	
 	
-// Funções executadas no momento em que é finalizado o carregamento da página, após o login ====
+// Funções executadas na inicialização =========================================================
 	
 	$( document ).ready(function() {
 		$("#imgEmailGeralRelat").hide();
 		getTodasAsSalasJSON();
 		getUsuariosOnlineSalaJSON();
 		getUsrLogadoJSON();
-		
-		// Rotina que apaga o form de login do cabeçalho e adiciona o href de logout
-		formLogin = document.getElementById("login-group-div");
-		formLogin.innerHTML = '';
-		formLogin.style.paddingRight ="10%";		
-		
+		labelLoginFail();
+			
 	});
+	
+
+	
+	
+	
+	
 // =============================================================================================	
 
+	
+	
+	
 	
 	function getUsrLogadoJSON() {
 		
@@ -39,17 +45,21 @@
 	  		
 	  		createLogout(usuarioLogado);
 		});
+		
 	}
 	
 	
 	function createLogout(usuarioLogado) {
-		
+			
+	  var formLogin = document.getElementById("login-group-div");
+	  formLogin.innerHTML = '';
+	  formLogin.style.paddingRight ="10%";
+
 	  var a = document.createElement('a');
       a.setAttribute('href', 'logout');
       a.appendChild(document.createTextNode("Log-out  (" + usuarioLogado[0] + ")"));
       a.style.color = 'white';
    	  formLogin.appendChild(a);
-
 	}
 	
 
@@ -71,7 +81,13 @@
 					
 					select: function(event, ui) {
 						scoIdNomeSelecionadoInputTodasSalas = scoIds[nomes.indexOf(ui.item.value)];         
+					},
+					
+					
+					focus: function( event, ui ) {
+						scoIdNomeSelecionadoInputTodasSalas = scoIds[nomes.indexOf(ui.item.value)];
 					}
+						
 			});
 
 	  	});
@@ -628,4 +644,34 @@
 	}
 	
 	
+	function labelLoginFail() {
+		
+		var status = GetURLParameter('statusCode');
+		
+		if(status === "no-data") {
+			document.getElementById('lbl-login-fail').style.visibility="visible";
+		}
+		
+	}
+
 	
+	
+	function GetURLParameter(sParam) {
+		
+	    var sPageURL = window.location.search.substring(1);
+	    var sURLVariables = sPageURL.split('&');
+	    
+	    for (var i = 0; i < sURLVariables.length; i++) {
+	        
+	    	var sParameterName = sURLVariables[i].split('=');
+	        
+	        if (sParameterName[0] == sParam) {
+	            return sParameterName[1];
+	        }
+	    }
+	}
+	
+	
+	function hideLblLoginFail() {
+		document.getElementById('lbl-login-fail').style.visibility="hidden";
+	}
