@@ -1,5 +1,7 @@
 package br.com.totvs.java3C.plugin;
 
+import br.com.totvs.java3C.fluig.plugin.AvailabilityFluig;
+
 
 
 /**
@@ -37,6 +39,9 @@ public class Nagios3C {
 		else if(codMonitoramento.equals("079")) {
 			new StatusItemAmbiente(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
+		else if(codMonitoramento.equals("104")) {
+			new AvailabilityFluig(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}
 		else {
 			System.out.println("Codigo de monitoramento invalido.");
 			System.exit(3);
@@ -60,6 +65,8 @@ public class Nagios3C {
 //			new Nagios3C("T16423", "00", "000051", "01", "002", "000030");
 //		    new Nagios3C("T16423", "00", "000051", "01", "004", "000030");
 //			new Nagios3C("T16423", "00", "000051", "01", "026", "000036");
+			
+//			new Nagios3C("TEZFI8", "00", "001773", "01", "104", "000075"); // Disponibilidade Fluig
 			 
 					
 		}
