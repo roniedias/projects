@@ -246,8 +246,9 @@ public class ConnectDashboardController {
 	
 	
 	
-
-	@RequestMapping("maximoUsuariosPorScoId.json")
+	
+//	@RequestMapping("maximoUsuariosPorScoId.json")
+	@RequestMapping("maximoUsuariosDataMesCorrente.json")
 	public void getmaximoUsuariosPorScoIdJson(HttpServletRequest request, HttpServletResponse response) {
 		
 		Dao dao = new Dao();
@@ -255,7 +256,7 @@ public class ConnectDashboardController {
 		
 		ArrayList<MaximoUsuariosPorData> maximoUsuariosPorScoId = new ArrayList<MaximoUsuariosPorData>();
 		
-		maximoUsuariosPorScoId = dao.getMaximoUsuariosData(request.getParameter("scoId"));
+		maximoUsuariosPorScoId = dao.getMaximoUsuariosDataMesCorrente(request.getParameter("scoId"));
 		
 		String maximoUsuariosPorScoIdJson = "["; 
 

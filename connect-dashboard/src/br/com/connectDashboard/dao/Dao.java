@@ -19,6 +19,7 @@ import br.com.connectDashboard.model.MaximoUsuariosPorData;
 import br.com.connectDashboard.model.ResponsavelSala;
 import br.com.connectDashboard.model.Sala;
 import br.com.connectDashboard.model.UsuariosOnlineSala;
+import br.com.connectDashboard.util.Datas;
 import br.com.connectDashboard.factory.ConnectionFactory;
 
 
@@ -189,7 +190,7 @@ public class Dao {
 		
 	
 	// Retorna o maior número de participantes de uma sala de reunião, de CADA DIA, desde o primeiro dia do mês corrente até a data atual 
-	public ArrayList<MaximoUsuariosPorData> getMaximoUsuariosData(String scoId) {
+	public ArrayList<MaximoUsuariosPorData> getMaximoUsuariosDataMesCorrente(String scoId) {
 		
 		ArrayList<MaximoUsuariosPorData> MaximoUsuariosPorDatas = new ArrayList<MaximoUsuariosPorData>();
 		
@@ -199,7 +200,14 @@ public class Dao {
 			
 //			Connection connection = datasource.getConnection();
 			
-			PreparedStatement stmt = connection.prepareStatement("SELECT DISTINCT MAX(tc.transcript_count) OVER (PARTITION BY CONVERT(DATE, tc.date_created)) AS max_usuarios, CONVERT(DATE, tc.date_created) AS data FROM pps_transcript_counts tc, pps_scos s WHERE tc.acl_id = s.sco_id AND s.SCO_ID = " + scoId + "AND tc.DATE_CREATED BETWEEN(SELECT DATEADD(month, DATEDIFF(month, 0, GETDATE()), 0) AS PRIMEIRO_DIA_DO_MES) AND (SELECT GETDATE() AS DATA_ATUAL) ORDER BY data");	
+			Datas d = new Datas();
+			
+			String dataInicial = d.getDateFirstDayOfCurrentMonth();
+			String dataFinal = d.getDateLastDayOfCurrentMonth();
+			
+//			PreparedStatement stmt = connection.prepareStatement("SELECT DISTINCT MAX(tc.transcript_count) OVER (PARTITION BY CONVERT(DATE, tc.date_created)) AS max_usuarios, CONVERT(DATE, tc.date_created) AS data FROM pps_transcript_counts tc, pps_scos s WHERE tc.acl_id = s.sco_id AND s.SCO_ID = " + scoId + "AND tc.DATE_CREATED BETWEEN(SELECT DATEADD(month, DATEDIFF(month, 0, GETDATE()), 0) AS PRIMEIRO_DIA_DO_MES) AND (SELECT GETDATE() AS DATA_ATUAL) ORDER BY data");
+			PreparedStatement stmt = connection.prepareStatement("SELECT DISTINCT MAX(tc.transcript_count) OVER (PARTITION BY CONVERT(DATE, tc.date_created)) AS max_usuarios, CONVERT(DATE, tc.date_created) AS data FROM pps_transcript_counts tc, pps_scos s WHERE s.SCO_ID = " + scoId + " AND	tc.acl_id = s.sco_id AND tc.DATE_CREATED BETWEEN '" + dataInicial + "' AND '" + dataFinal + "' ORDER BY data");
+			
 			
 			ResultSet rs = stmt.executeQuery();
 			

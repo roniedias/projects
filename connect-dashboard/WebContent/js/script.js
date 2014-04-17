@@ -179,12 +179,12 @@
     
     
     
-    //Início da rotina de criação do gráfico da sala selecionada (a partir da tab Salas), na tab Gráficos
+    //Início da rotina de criação do gráfico da sala selecionada (a partir da table de salas em uso no mês atual), na tab Gráficos
 	function desenhaGraficoSala(scoId, nomeSala) {
 			
 		var maximoUsuariosPorScoIdArray = [];
 		
-		$.getJSON("maximoUsuariosPorScoId.json", {scoId : scoId}, function(data) {
+		$.getJSON("maximoUsuariosDataMesCorrente.json", {scoId : scoId}, function(data) {
 			$.each(data, function(key, val) {
 				maximoUsuariosPorScoIdArray.push(val);
 			});	
