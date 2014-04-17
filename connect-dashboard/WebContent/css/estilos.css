@@ -167,15 +167,23 @@ td.relat-dropdown-td {
 }
 
 td.relat-imgmail-td {
-	width: 45%
+	width: 10%
+}
+
+td.relat-imgfile-td {
+	width: 35%
 }
 
 
 .fig-mail-geral-relat img {
-	padding-left: 10%;
+	padding-left: 40%;
 	cursor: pointer;
 }
 
+
+.fig-arquivo-geral-relat img {
+	cursor: pointer;
+}
 
 
 #body-login {

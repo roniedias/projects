@@ -16,6 +16,7 @@
 	
 	$( document ).ready(function() {
 		$("#imgEmailGeralRelat").hide();
+		$("#imgArquivoGeralRelat").hide();
 		getTodasAsSalasJSON();
 		getUsuariosOnlineSalaJSON();
 		getUsrLogadoJSON();
@@ -315,6 +316,10 @@
 	
 	function geraRelatorioSalas(tipoRelatorio) {
 		
+		$("#imgEmailGeralRelat").hide();
+		$("#imgArquivoGeralRelat").hide();
+
+		
 		tipoRelatorioGlobal = tipoRelatorio;
 		
 		
@@ -493,6 +498,7 @@
 				function( data, textStatus, jqXHR ) {
 					
 					$("#imgEmailGeralRelat").show();
+					$("#imgArquivoGeralRelat").show();
 
 					var tabela = document.createElement('table');
 					tabela.setAttribute("id", "table-responsaveis-sala"); // Atribuindo um ID à tabela
@@ -617,6 +623,7 @@
 		}
 		
 		$("#imgEmailGeralRelat").hide();
+		$("#imgArquivoGeralRelat").hide();
 		
 
 		
@@ -672,6 +679,48 @@
 	}
 	
 	
+	
 	function hideLblLoginFail() {
 		document.getElementById('lbl-login-fail').style.visibility="hidden";
+	}
+	
+	
+	
+	function geraCSVHosts() {
+		
+		if(emailResponsaveis.length === 0) { // Se todos os e-mails dos hosts foram excluídos (array vazio)
+			alert("Lista de e-mails vazia.");
+			geraRelatorioSalas(tipoRelatorioGlobal);
+		}
+		else {
+			
+			var csvRows = [];
+
+			for(var i=0; i < emailResponsaveis.length; i++){
+			    csvRows.push(emailResponsaveis[i]);
+			}
+
+			var csvString = csvRows.join("%0A");
+			var a         = document.createElement('a');
+			a.href        = 'data:attachment/csv,' + csvString;
+			a.target      = '_blank';
+			a.download    = 'hosts_' + relatNomeSalaGlobal + '.csv';
+
+			document.body.appendChild(a);
+			a.click();
+			
+			emailResponsaveis.length = 0;
+			
+			$.when( $('#panel-body-relatorios').empty() ).then(
+				function( data, textStatus, jqXHR ) {
+					$("#relatorios-lbl").show();
+					$( "#panel-body-relatorios" ).append( "<span class='label label-primary' id='relatorios-lbl'>ARQUIVO CSV GERADO COM SUCESSO!</span>");
+				}
+			);
+			
+		}
+		
+		$("#imgEmailGeralRelat").hide();
+		$("#imgArquivoGeralRelat").hide();
+		
 	}

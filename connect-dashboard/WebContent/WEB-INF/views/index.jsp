@@ -75,6 +75,11 @@
 										      <img src="images/mail.png" id="imgEmailGeralRelat" onmouseover="" title="Enviar e-mail" onclick="enviarEmailHostsSala()">
 										    </figure>
 										</td>
+										<td class="relat-imgfile-td">
+											<figure class="fig-arquivo-geral-relat">
+										      <img src="images/file.png" id="imgArquivoGeralRelat" onmouseover="" title="Gerar arquivo CSV" onclick="geraCSVHosts()">
+										    </figure>
+										</td>
 								  	</tr>
 								</table>
 							</div>				  		
