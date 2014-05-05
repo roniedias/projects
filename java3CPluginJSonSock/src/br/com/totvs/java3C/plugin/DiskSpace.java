@@ -42,9 +42,9 @@ public class DiskSpace {
 	private ArrayList<String> auxListZCA_MEMO = new ArrayList<String>();
 	
 		
-//	private String codTipoServicoLicense = "13";
-//	private String codTipoServicoTopConnect = "16";
-//	private String codTipoServicoCtree = "21"; 
+	private String codTipoServicoLicense = "13";
+	private String codTipoServicoTopConnect = "16";
+	private String codTipoServicoCtree = "21"; 
 
 	private DiskSpaceParserMon diskSpaceParser;
 	private String [] diskSpaceParserReturn;
@@ -76,9 +76,9 @@ public class DiskSpace {
 		
 		// Adicionando os tipos de serviço a zbhTipSrvs, excluindo os Tipos LICENSE, TOP e CTREE
 		for(int z = 0; z < zbhAllTipSrvs.length; z++) {
-//			if(!(zbhAllTipSrvs[z].equals(codTipoServicoLicense) || zbhAllTipSrvs[z].equals(codTipoServicoTopConnect) || zbhAllTipSrvs[z].equals(codTipoServicoCtree))) {
+			if(!(zbhAllTipSrvs[z].equals(codTipoServicoLicense) || zbhAllTipSrvs[z].equals(codTipoServicoTopConnect) || zbhAllTipSrvs[z].equals(codTipoServicoCtree))) {
 				zbhTipSrvs.add(zbhAllTipSrvs[z]);  
-//			}									  
+			}									  
 		}
 		
 		
