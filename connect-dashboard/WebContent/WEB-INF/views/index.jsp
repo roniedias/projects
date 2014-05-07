@@ -116,7 +116,7 @@
 	 							  			<div class="col-lg-12" id="div-executar">
 	 						    				<div class="input-group">
 <!-- 	 						      					<input type="text" class="form-control" id="input-todas-salas" name="input-todas-salas" placeholder="Digite o nome do cliente" onClick="limpaInputTodasSalas()"> -->
-	 						      					<input type="text" class="form-control" id="input-todas-salas" name="input-todas-salas" placeholder="Digite o nome do cliente">
+	 						      					<input type="text" class="form-control" id="input-todas-salas" name="input-todas-salas" placeholder="Digite o nome da sala virtual">
 	 						      					<span class="input-group-btn">
 	 						        					<button class="btn btn-primary" type="button" id="btn-executar" onclick="desenhaGraficoSalaEspecifica(document.getElementById('input-data-inicio').value, document.getElementById('input-data-fim').value, document.getElementById('input-todas-salas').value)">Executar</button>
 	 						      					</span>
