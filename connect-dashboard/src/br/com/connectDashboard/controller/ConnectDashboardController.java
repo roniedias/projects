@@ -3,7 +3,10 @@ package br.com.connectDashboard.controller;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -124,6 +127,12 @@ public class ConnectDashboardController {
         if(statusCode.equals("ok")) {   	
         	
         	session.setAttribute("usuarioLogado", usr);
+        	
+        	// Logando data e hora em que um usuário logou-se no sistema --------------------------
+        	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        	Date date = new Date();
+        	System.out.println("Usuario: " + usr + " efetuou log-in em " + dateFormat.format(date));
+        	//-------------------------------------------------------------------------------------
        
             mav.setViewName("index");
             
