@@ -43,10 +43,11 @@ import br.com.connectDashboard.util.Init;
 public class ConnectDashboardController {
 
 	private static String CONFIG_FILE_PATH; 
-	
+	private DateFormat dateFormat;
 	
 	public ConnectDashboardController() {
 		CONFIG_FILE_PATH = Init.getWebInfPath() + "/app-config.xml"; // Caminho do arquivo app-config que se encontra dentro da pasta WEB-INF
+		dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	}
 	
 	
@@ -129,7 +130,6 @@ public class ConnectDashboardController {
         	session.setAttribute("usuarioLogado", usr);
         	
         	// Logando data e hora em que um usuário logou-se no sistema --------------------------
-        	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         	Date date = new Date();
         	System.out.println("Usuario: " + usr + " efetuou log-in em " + dateFormat.format(date));
         	//-------------------------------------------------------------------------------------
