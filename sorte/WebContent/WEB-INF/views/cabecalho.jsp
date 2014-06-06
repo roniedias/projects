@@ -3,7 +3,7 @@
 	<body>
 	
 		<head>				
- 			<link rel="stylesheet" href="css/estilos.css">			  		    			  			  		    			  
+ 			<link rel="stylesheet" href="css/header.css"> 						  		    			  			  		    			  
 		</head>
 	
 	
@@ -16,7 +16,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-          	  <a class="navbar-brand" href="index">Mania da Sorte</a>
+          	  <a class="navbar-brand" href="index">Site em DEV</a>
         	</div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

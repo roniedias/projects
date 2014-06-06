@@ -3,6 +3,7 @@ package br.com.totvs.java3C.plugin;
 import br.com.totvs.java3C.fluig.plugin.AvailabilityFluig;
 import br.com.totvs.java3C.rm.plugin.AvailabilityRM;
 import br.com.totvs.java3C.rm.plugin.DiskSpaceRM;
+import br.com.totvs.java3C.datasul.plugin.AvailabilityDatasul;
 
 
 
@@ -50,6 +51,9 @@ public class Nagios3C {
 		else if(codMonitoramento.equals("028")) {
 			new DiskSpaceRM(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
+		else if(codMonitoramento.equals("099")) {
+			new AvailabilityDatasul(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}
 		else {
 			System.out.println("Codigo de monitoramento invalido.");
 			System.exit(3);
@@ -77,6 +81,8 @@ public class Nagios3C {
 //			new Nagios3C("TEZFI8", "00", "001773", "01", "104", "000075"); // Disponibilidade Fluig
 //		    new Nagios3C("99401", "00", "000039", "02", "030", "000029"); // Disponibilidade RM
 //			new Nagios3C("99401", "00", "000039", "02", "028", "000029"); // DiskSpaceRM
+		
+//			new Nagios3C("99958", "00", "000125", "09", "099", "000019");
 			 
 					
 		}

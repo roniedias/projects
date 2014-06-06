@@ -11,7 +11,7 @@
 			<script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
 			<link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css" media="screen" />
 			<link href="<c:url value="/css/bootstrap-theme.min.css"/>" rel="stylesheet" type="text/css" media="screen" />
-			<link rel="stylesheet" href="css/estilos.css">			  		    			  
+			<link rel="stylesheet" href="css/estilos.css">
 	</head>
 	
 	<c:import url="cabecalho.jsp" />
