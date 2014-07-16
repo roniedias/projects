@@ -3,12 +3,18 @@ package br.com.totvs.java3C.bean.datasul;
 public class Banco {
 	
 	private String nomeFisico;
-	private String alias;
+	private String nomeLogico;
+	private String monitLogin;
 	private String ip;
+	private String nomeSrv;
 	private String porta;
 	private String usuario;
 	private String senha;
 	private String urlConexao;
+	private String tipoBanco;
+	private String dirBanco;
+	private String bkpAiLog;
+	private String bkpFull;
 
 	public String getNomeFisico() {
 		return nomeFisico;
@@ -16,12 +22,19 @@ public class Banco {
 	public void setNomeFisico(String nomeFisico) {
 		this.nomeFisico = nomeFisico;
 	}
-	
-	public String getAlias() {
-		return alias;
+
+	public String getNomeLogico() {
+		return nomeLogico;
 	}
-	public void setAlias(String alias) {
-		this.alias = alias;
+	public void setNomeLogico(String nomeLogico) {
+		this.nomeLogico = nomeLogico;
+	}
+
+	public String getMonitLogin() {
+		return monitLogin;
+	}
+	public void setMonitLogin(String monitLogin) {
+		this.monitLogin = monitLogin;
 	}
 	
 	public String getIp() {
@@ -29,6 +42,13 @@ public class Banco {
 	}
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+	
+	public String getNomeSrv() {
+		return nomeSrv;
+	}
+	public void setNomeSrv(String nomeSrv) {
+		this.nomeSrv = nomeSrv;
 	}
 	
 	public String getPorta() {
@@ -58,6 +78,36 @@ public class Banco {
 	public void setUrlConexao(String urlConexao) {
 		this.urlConexao = urlConexao;
 	}
+	
+	public String getTipoBanco() {
+		return tipoBanco;
+	}
+	public void setTipoBanco(String tipoBanco) {
+		this.tipoBanco = tipoBanco;
+	}
+	
+	public String getDirBanco() {
+		return dirBanco;
+	}
+	public void setDirBanco(String dirBanco) {
+		this.dirBanco = dirBanco;
+	}
+	
+	public String getBkpAiLog() {
+		return bkpAiLog;
+	}
+	public void setBkpAiLog(String bkpAiLog) {
+		this.bkpAiLog = bkpAiLog;
+	}
+	
+	public String getBkpFull() {
+		return bkpFull;
+	}
+	public void setBkpFull(String bkpFull) {
+		this.bkpFull = bkpFull;
+	}
+	
+	
 	
 	
 	

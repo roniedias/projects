@@ -46,7 +46,8 @@ public class DbConnectionFactory {
 		FileInputStream fis = null;
 		
 		try {
-			fis = new FileInputStream("resources/db.properties");
+//			fis = new FileInputStream("resources/db.properties");
+			fis = new FileInputStream("/usr/lib/nagios/plugins/db.properties");
 			props.load(fis);
 			DB_DRIVER_CLASS = props.getProperty("DB_DRIVER_CLASS");
 			DB_URL = props.getProperty("DB_URL");

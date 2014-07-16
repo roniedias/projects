@@ -1,10 +1,25 @@
 package br.com.totvs.java3C.bean.datasul;
 
 public class AppServer {
+
+	private String seq;
 	private String ip;
-	private String porta;
+	private String portaNs;
 	private String instanciaApp;
 	private String nomeHost;
+	private String protocolo;
+	private String portaApp;
+	private String monitora;
+	
+	
+	
+	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	
 	public String getIp() {
 		return ip;
@@ -13,11 +28,11 @@ public class AppServer {
 		this.ip = ip;
 	}
 	
-	public String getPorta() {
-		return porta;
+	public String getPortaNs() {
+		return portaNs;
 	}
-	public void setPorta(String porta) {
-		this.porta = porta;
+	public void setPortaNs(String portaNs) {
+		this.portaNs = portaNs;
 	}
 	
 	public String getInstanciaApp() {
@@ -33,7 +48,27 @@ public class AppServer {
 	public void setNomeHost(String nomeHost) {
 		this.nomeHost = nomeHost;
 	}
+	
+	public String getProtocolo() {
+		return protocolo;
+	}
+	public void setProtocolo(String protocolo) {
+		this.protocolo = protocolo;
+	}
 
+	public String getPortaApp() {
+		return portaApp;
+	}
+	public void setPortaApp(String portaApp) {
+		this.portaApp = portaApp;
+	}
+	
+	public String getMonitora() {
+		return monitora;
+	}
+	public void setMonitora(String monitora) {
+		this.monitora = monitora;
+	}
 	
 
 }

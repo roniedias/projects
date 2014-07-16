@@ -1,22 +1,17 @@
 package br.com.totvs.java3C.bean.datasul;
 
-import br.com.totvs.java3C.util.PathConverter;
-
 public class AtalhoInfo {
 	
 	private String dirProwin32;
 	private String dirArquivoPf;
 	private String dirArquivoIni;
 	private String dirRaizCliente;
+	private String ip;
+	private String spool;
+	private String especiais;
+	private String especificos;
 	
-	private PathConverter pathConverter;
-	
-	public AtalhoInfo() {
-		pathConverter = new PathConverter();
-	}
-
 	public String getDirProwin32() {
-		//return pathConverter.duplicateBackSlash(dirProwin32);
 		return dirProwin32;
 	}
 	public void setDirProwin32(String dirProwin32) {
@@ -24,7 +19,6 @@ public class AtalhoInfo {
 	}
 	
 	public String getDirArquivoPf() {
-		//return pathConverter.duplicateBackSlash(dirArquivoPf);
 		return dirArquivoPf;
 	}
 	public void setDirArquivoPf(String dirArquivoPf) {
@@ -32,7 +26,6 @@ public class AtalhoInfo {
 	}
 	
 	public String getDirArquivoIni() {
-		//return pathConverter.duplicateBackSlash(dirArquivoIni);
 		return dirArquivoIni;
 	}
 	public void setDirArquivoIni(String dirArquivoIni) {
@@ -40,14 +33,38 @@ public class AtalhoInfo {
 	}
 
 	public String getDirRaizCliente() {
-		//return pathConverter.duplicateBackSlash(dirRaizCliente);
 		return dirRaizCliente;
 	}
 	public void setDirRaizCliente(String dirRaizCliente) {
 		this.dirRaizCliente = dirRaizCliente;
 	}
 	
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	
+	public String getSpool() {
+		return spool;
+	}
+	public void setSpool(String spool) {
+		this.spool = spool;
+	}
 	
-
+	public String getEspeciais() {
+		return especiais;
+	}
+	public void setEspeciais(String especiais) {
+		this.especiais = especiais;
+	}
+	
+	public String getEspecificos() {
+		return especificos;
+	}
+	public void setEspecificos(String especificos) {
+		this.especificos = especificos;
+	}
+		
 }

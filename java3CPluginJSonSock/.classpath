@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/mail-1.4.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/java-json.jar"/>
@@ -11,9 +12,18 @@
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/saaj.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/org.apache.axis_1.4.0.v201005080400/lib/axis.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/org.apache.commons.discovery_0.2.0.v201004190315/lib/commons-discovery-0.2.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/javax.xml.rpc_1.1.0.v201005080400/lib/jaxrpc.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/javax.xml.soap_1.2.0.v201005080501/lib/saaj.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/commons-net-1.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/o4glrt-10.2b.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/openedge-10.2B.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/sqljdbc4-4.0.2206.100.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/commons-dbcp2-2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/commons-pool2-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/db2jcc4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/datasul-cloud-monitor-server-client-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/o4glrt-11.3.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/openedge-11.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
