@@ -32,7 +32,7 @@ public class Nagios3C {
 						
 		
 		if(codMonitoramento.equals("004")) { 
-			new Availability(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+			new AvailabilityMultiThread(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
 		else if(codMonitoramento.equals("025")) {
 			new ActiveConnections(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
@@ -126,8 +126,8 @@ public class Nagios3C {
 //			new Nagios3C("T16423", "00", "000051", "01", "002", "000030");
 //		    new Nagios3C("T16423", "00", "000051", "01", "004", "000030");
 //			new Nagios3C("T16423", "00", "000051", "01", "026", "000036");
-		
-//		    new Nagios3C("99061", "00", "000117", "01", "004", "000030");
+//		    new Nagios3C("T01489", "00", "000557", "01", "004", "000030");
+//		    new Nagios3C("T87332", "00", "000070", "01", "004", "000030");
 			
 //			new Nagios3C("TEZFI8", "00", "001773", "01", "104", "000075"); // Disponibilidade Fluig
 //		    new Nagios3C("99401", "00", "000039", "02", "030", "000029"); // Disponibilidade RM
@@ -157,5 +157,3 @@ public class Nagios3C {
 	}
 		
 }
-
-

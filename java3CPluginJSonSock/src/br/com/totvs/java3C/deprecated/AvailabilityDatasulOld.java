@@ -1,4 +1,4 @@
-package br.com.totvs.java3C.datasul.deprecated;
+package br.com.totvs.java3C.deprecated;
 
 //import java.net.MalformedURLException;
 //import java.rmi.Naming;

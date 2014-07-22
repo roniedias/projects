@@ -1,4 +1,4 @@
-package br.com.totvs.java3C.plugin;
+package br.com.totvs.java3C.deprecated;
 
 import java.util.ArrayList;
 
