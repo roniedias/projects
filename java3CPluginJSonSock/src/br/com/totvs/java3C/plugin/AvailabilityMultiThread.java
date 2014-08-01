@@ -282,7 +282,8 @@ public class AvailabilityMultiThread {
 	    ArrayList<AuxServicos> auxServicosList = new ArrayList<AuxServicos>();
 	    	    
 		
-        ZCA_MEMO = "Environment: " + environment.replaceAll("\\s", "") + ", porta: " + porta.replaceAll("\\s", "") + " - " + availabilityParser.getMessageInfo() + "; "; 																
+        //ZCA_MEMO = "Environment: " + environment.replaceAll("\\s", "") + ", porta: " + porta.replaceAll("\\s", "") + " - " + availabilityParser.getMessageInfo() + "; ";
+	    ZCA_MEMO = "Ip: " + ip + ", environment: " + environment.replaceAll("\\s", "") + ", porta: " + porta.replaceAll("\\s", "") + " - " + availabilityParser.getMessageInfo() + "; ";
 		servers = availabilityParser.getServers(); 
 		
 		                       // servers.size() = 5, 1, 1

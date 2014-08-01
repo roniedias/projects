@@ -132,7 +132,8 @@ public class Nagios3C {
 //			new Nagios3C("TEZFI8", "00", "001773", "01", "104", "000075"); // Disponibilidade Fluig
 //		    new Nagios3C("99401", "00", "000039", "02", "030", "000029"); // Disponibilidade RM
 //			new Nagios3C("99401", "00", "000039", "02", "028", "000029"); // DiskSpaceRM
-		
+		    
+//		    new Nagios3C("99061", "00", "000117", "01", "004", "000030"); // TOTVS TDI
 
 //			new Nagios3C("99958", "00", "002251", "02", "108", "000019");
 //		    new Nagios3C("99958", "00", "002251", "02", "109", "000019");
