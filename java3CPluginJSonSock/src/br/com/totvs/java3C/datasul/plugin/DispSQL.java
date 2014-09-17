@@ -34,6 +34,7 @@ public class DispSQL {
 	private String ZCA_ITEM;
 	private float ZCA_RESULT = 100;
 	private String ZCA_MEMO;
+	private String portaMonit;
 	
 	// TODOS os bancos devem estar disponíveis. O retorno da disponibilidade será 0%, caso haja um banco sequer indisponível
 	public DispSQL(String codAmbiente, String codTipoAmbiente, String codMonitoramento, String codProduto) {
@@ -45,6 +46,7 @@ public class DispSQL {
 		Dao dao = new Dao();
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		bancos = dao.getBancos(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -70,7 +72,7 @@ public class DispSQL {
 	    	rmiStrConnection.append("rmi://");
 	    	rmiStrConnection.append(bancos.get(0).getIp().trim()); // Pressupõe-se o serviço de monitoramento estar executando no servidor do banco
 	    	rmiStrConnection.append(":");
-	    	rmiStrConnection.append("1099");
+	    	rmiStrConnection.append(portaMonit);
 	    	rmiStrConnection.append("/DatasulCloudMonitor");
 	      
 	    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

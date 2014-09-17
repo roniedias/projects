@@ -34,6 +34,7 @@ public class DispEAI2 {
 	private String protocoloEai2;
 	private String ipEai2;
 	private String portaEai2;
+	private String portaMonit;
 	
 	
 
@@ -47,6 +48,7 @@ public class DispEAI2 {
 		Dao dao = new Dao();
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		eai2Info = dao.getEai2Info(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -77,7 +79,7 @@ public class DispEAI2 {
 		    	rmiStrConnection.append("rmi://");
 		    	rmiStrConnection.append(ipEai2);
 		    	rmiStrConnection.append(":");
-		    	rmiStrConnection.append("1099");
+		    	rmiStrConnection.append(portaMonit);
 		    	rmiStrConnection.append("/DatasulCloudMonitor");
 		      
 		    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

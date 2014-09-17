@@ -186,8 +186,8 @@ public class AvailabilityRM {
 	   		sb.append(s);
 	   	}
 	   	
-	   	ZCA_MEMO = sb.toString();
-	   	
+	   	ZCA_MEMO = sb.toString().replaceAll("ã", "a");
+	   		   	
 		
 	   	ParserWriteAvail parserWriteAvail = new ParserWriteAvail("AVAILABILITY_WRITE", ZCA_CODAMB, ZCA_TIPAMB, ZCA_ITEM, ZCA_PARAM, ZCA_MEMO, SERVICOSARRAY);
 	   	

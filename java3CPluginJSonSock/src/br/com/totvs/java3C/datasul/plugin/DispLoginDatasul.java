@@ -32,7 +32,8 @@ public class DispLoginDatasul {
 	private ArrayList<AppServer> appServInfo;
 	private ArrayList<JBossInfo> jBossInfo;
     private String usuarioItemAmbiente;
-    private String senhaItemAmbiente;   
+    private String senhaItemAmbiente;
+    private String portaMonit;
 	
 	
 
@@ -53,6 +54,7 @@ public class DispLoginDatasul {
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
 		jBossInfo = dao.getJBossInfo(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 
 		for(ItemAmbiente i : itensAmbiente) {
@@ -104,7 +106,7 @@ public class DispLoginDatasul {
 					    	rmiStrConnection.append("rmi://");
 					    	rmiStrConnection.append(hostMonit);
 					    	rmiStrConnection.append(":");
-					    	rmiStrConnection.append("1099");
+					    	rmiStrConnection.append(portaMonit);
 					    	rmiStrConnection.append("/DatasulCloudMonitor");
 					      
 					    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

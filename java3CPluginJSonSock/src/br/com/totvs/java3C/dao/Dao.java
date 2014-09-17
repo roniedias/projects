@@ -37,13 +37,14 @@ public class Dao {
 		ResultSet rs;
 		try {			
 			//String sql = "SELECT ZBA_CLIENT, ZBA_DESCR, ZBA_LOJA FROM ZBA000 WHERE D_E_L_E_T_ = ' ' AND ZBA_CODAMB = '" + codAmbiente + "'";
-			String sql = "SELECT ZBA_CLIENT, ZBA_DESCR, ZBA_LOJA FROM ZBA000 WHERE ZBA_FILIAL = '  ' AND D_E_L_E_T_ = ' ' AND ZBA_CODAMB = '" + codAmbiente + "'";
+			String sql = "SELECT ZBA_CLIENT, ZBA_DESCR, ZBA_LOJA, ZBA_PORTDS FROM ZBA000 WHERE ZBA_FILIAL = '  ' AND D_E_L_E_T_ = ' ' AND ZBA_CODAMB = '" + codAmbiente + "'";
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery(sql);
 			if(rs.next()) {
 				cliente.setCodigo(rs.getString("ZBA_CLIENT"));
 				cliente.setNome(rs.getString("ZBA_DESCR").trim());
 				cliente.setLoja(rs.getString("ZBA_LOJA").trim());
+				cliente.setPortaMonit(rs.getString("ZBA_PORTDS").trim()); // Adicionado em 17/09/2014
 			}
 			rs.close();
 			stmt.close();			

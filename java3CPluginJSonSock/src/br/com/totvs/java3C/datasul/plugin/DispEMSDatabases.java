@@ -43,7 +43,7 @@ public class DispEMSDatabases {
 	private float ZCA_RESULT = 100;
 	private String ZCA_MEMO;
 	private String appServerIp = "no_info";
-	
+	private String portaMonit;
 
 	// Todas as informações, com exceção dos nomes dos bancos (presentes em Datasul > BANCOS > Nome Fisico), 
     //	serão obtidas a partir de Datasul > Atalhos > Atalho, inclusive o IP do servidor de monitoramento. 
@@ -64,6 +64,7 @@ public class DispEMSDatabases {
 		atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto);
 		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);		
 		bancos = dao.getBancos(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -109,7 +110,7 @@ public class DispEMSDatabases {
 	    	rmiStrConnection.append("rmi://");
 	    	rmiStrConnection.append(appServerIp);
 	    	rmiStrConnection.append(":");
-	    	rmiStrConnection.append("1099");
+	    	rmiStrConnection.append(portaMonit);
 	    	rmiStrConnection.append("/DatasulCloudMonitor");
 	      
 	    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

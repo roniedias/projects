@@ -37,6 +37,7 @@ public class DispDatasulDatabases {
 	private String ZCA_ITEM;
 	private float ZCA_RESULT = 100;
 	private String ZCA_MEMO;
+	private String portaMonit;
 	
 	private List<AvailabilityDatabaseItem> avalItems = new ArrayList<AvailabilityDatabaseItem>();
 	
@@ -61,6 +62,7 @@ public class DispDatasulDatabases {
 		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		bancos = dao.getBancos(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit(); 
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -111,7 +113,7 @@ public class DispDatasulDatabases {
 		    	rmiStrConnection.append("rmi://");
 		    	rmiStrConnection.append(appServerIp);
 		    	rmiStrConnection.append(":");
-		    	rmiStrConnection.append("1099");
+		    	rmiStrConnection.append(portaMonit);
 		    	rmiStrConnection.append("/DatasulCloudMonitor");
 		      
 		    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

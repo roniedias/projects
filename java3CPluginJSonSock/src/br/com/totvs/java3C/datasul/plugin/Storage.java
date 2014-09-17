@@ -48,6 +48,9 @@ public class Storage {
 	private String bkpFull;
 	private String jbossCliPath;
 	
+	private String atalhoIp;
+	private String portaMonit;
+	
 	
 	private double tamanhoTotal = 0.0;
 	DecimalFormat df = new DecimalFormat("#.########");
@@ -86,9 +89,10 @@ public class Storage {
 
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
-		atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto);
+		atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto); // Adicionado em 16/09/2014
 		bancos = dao.getBancos(codAmbiente, codTipoAmbiente, codProduto);
 		jBossInfo = dao.getJBossInfo(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -119,6 +123,7 @@ public class Storage {
 		}
 		
 		try {
+			atalhoIp = atalhoInfo.getIp(); // Adicionado em 16/09/2014
 	    	especiais = atalhoInfo.getEspeciais();     
 	    	especificos = atalhoInfo.getEspecificos(); 
 	    	spool = atalhoInfo.getSpool();
@@ -160,16 +165,15 @@ public class Storage {
 				System.exit(1);
 			}
 			else {
-				StorageUtil storageJBoss = new StorageUtil(jBossServerIp, jbossCliPath);
+				StorageUtil storageJBoss = new StorageUtil(jBossServerIp, portaMonit, jbossCliPath);
 				ZCA_MEMO += storageJBoss.getInfo();
 				tamanhoTotal = storageJBoss.getTamanhoTotal();
 			}
 		}
 		
-		
-		
-		StorageUtil storageAtalhos = new StorageUtil(appServerIp, especiais, especificos, spool);
-		StorageUtil storageBancos = new StorageUtil(bancoServerIp, dirBanco, bkpAiLog, bkpFull);
+				
+		StorageUtil storageAtalhos = new StorageUtil(atalhoIp, portaMonit, especiais, especificos, spool); // Alterado de appServerIp para atalhoIp, em 16/09/2014 
+		StorageUtil storageBancos = new StorageUtil(bancoServerIp, portaMonit, dirBanco, bkpAiLog, bkpFull);
 		tamanhoTotal += storageAtalhos.getTamanhoTotal() + storageBancos.getTamanhoTotal();
 		ZCA_MEMO +=  storageAtalhos.getInfo() + storageBancos.getInfo();
 		

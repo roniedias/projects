@@ -37,6 +37,7 @@ public class DispRPWEMS {
 	private String dirProwin32;
 	private String dirArquivoPf;
 	private String dirArquivoIni;
+	private String portaMonit;
 	
 
 
@@ -52,6 +53,7 @@ public class DispRPWEMS {
 		//atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto);
 		rpwLegado = dao.getRpwLegado(codAmbiente, codTipoAmbiente, codProduto);
 		bancoFoundation = dao.getBancoFoundation(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -89,7 +91,7 @@ public class DispRPWEMS {
 	    	rmiStrConnection.append("rmi://");
 	    	rmiStrConnection.append(monitSrv);
 	    	rmiStrConnection.append(":");
-	    	rmiStrConnection.append("1099");
+	    	rmiStrConnection.append(portaMonit);
 	    	rmiStrConnection.append("/DatasulCloudMonitor");
 	      
 	    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

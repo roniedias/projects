@@ -32,6 +32,7 @@ public class DispJBoss {
 	private String ZCA_ITEM;
 	private float ZCA_RESULT = 0;
 	private String ZCA_MEMO;
+	private String portaMonit;
 
 	
 	
@@ -51,6 +52,8 @@ public class DispJBoss {
 		Dao dao = new Dao();
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		jBossInfo = dao.getJBossInfo(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
+		System.out.println(portaMonit);
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -85,7 +88,7 @@ public class DispJBoss {
 			    	rmiStrConnection.append("rmi://");
 			    	rmiStrConnection.append(ipSrvMonit);
 			    	rmiStrConnection.append(":");
-			    	rmiStrConnection.append("1099");
+			    	rmiStrConnection.append(portaMonit);
 			    	rmiStrConnection.append("/DatasulCloudMonitor");
 			      
 			    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

@@ -38,6 +38,8 @@ public class DispLoginEMS {
 	private String dirArquivoIni;
 	
 	private String monitSrv;
+	private String portaMonit;
+	
 	
 
 	
@@ -53,6 +55,7 @@ public class DispLoginEMS {
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		rpwLegado = dao.getRpwLegado(codAmbiente, codTipoAmbiente, codProduto);
 		bancoFoundation = dao.getBancoFoundation(codAmbiente, codTipoAmbiente, codProduto);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		
 		dao.closeConnection();
 		
@@ -99,7 +102,7 @@ public class DispLoginEMS {
 	    	rmiStrConnection.append("rmi://");
 	    	rmiStrConnection.append(monitSrv);
 	    	rmiStrConnection.append(":");
-	    	rmiStrConnection.append("1099");
+	    	rmiStrConnection.append(portaMonit);
 	    	rmiStrConnection.append("/DatasulCloudMonitor");
 	      
 	    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

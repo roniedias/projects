@@ -5,6 +5,7 @@ public class Cliente {
 	public String codigo;
 	public String nome;
 	public String loja;
+	public String portaMonit; // Adicionado em 17/09/2014
 
 	public String getCodigo() {
 		return codigo;
@@ -26,6 +27,14 @@ public class Cliente {
 	public void setLoja(String loja) {
 		this.loja = loja;
 	}
+	
+	public String getPortaMonit() {
+		return portaMonit;
+	}
+	public void setPortaMonit(String portaMonit) {
+		this.portaMonit = portaMonit;
+	}
+
 		
 
 }

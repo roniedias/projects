@@ -32,6 +32,7 @@ public class DispAppServer {
 	private String ZCA_ITEM;
 	private float ZCA_RESULT;
 	private String ZCA_MEMO = new String();
+	private String portaMonit; // Adicionado em 17/09/2014
 	
 
 	
@@ -46,6 +47,7 @@ public class DispAppServer {
 		Dao dao = new Dao();
 		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit(); // Adicionado em 17/09/2014
 		dao.closeConnection();
 		
 		 
@@ -100,7 +102,7 @@ public class DispAppServer {
 				    	rmiStrConnection.append("rmi://");
 				    	rmiStrConnection.append(hostMonit);
 				    	rmiStrConnection.append(":");
-				    	rmiStrConnection.append("1099");
+				    	rmiStrConnection.append(portaMonit); // Adicionado em 17/09/2014
 				    	rmiStrConnection.append("/DatasulCloudMonitor");
 				      
 				    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

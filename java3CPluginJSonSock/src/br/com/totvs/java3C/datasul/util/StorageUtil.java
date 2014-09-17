@@ -23,7 +23,7 @@ public class StorageUtil {
 	private String info = new String();
 
 	
-	public StorageUtil(String hostMonit, String ... caminhos) {
+	public StorageUtil(String hostMonit, String portaMonit, String ... caminhos) {
 		
     	List<StorageParamsDirItem> storageList = new ArrayList<StorageParamsDirItem>();
     	StorageParamsDirItem storageParamItem = new StorageParamsDirItem();
@@ -57,7 +57,7 @@ public class StorageUtil {
 	    	rmiStrConnection.append("rmi://");
 	    	rmiStrConnection.append(hostMonit);
 	    	rmiStrConnection.append(":");
-	    	rmiStrConnection.append("1099");
+	    	rmiStrConnection.append(portaMonit);
 	    	rmiStrConnection.append("/DatasulCloudMonitor");
 	      
 	    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));

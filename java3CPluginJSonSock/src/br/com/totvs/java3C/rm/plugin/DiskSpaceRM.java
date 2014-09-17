@@ -60,7 +60,8 @@ public class DiskSpaceRM {
 		}
 		
 		
-		for(int lst = 0; lst < zbhTipSrvs.size(); lst++) {			
+		for(int lst = 0; lst < zbhTipSrvs.size(); lst++) {
+			
 			servicosItemTipoAmb = parserRead.getServicosItemTipoAmb(zbhTipSrvs.get(lst));
 		}
 			
@@ -86,19 +87,21 @@ public class DiskSpaceRM {
 		//banco de dados, não precisa  
 		for(int s = 0; s < servicosItemTipoAmb.size(); s++) {
 			
-			
-			
 			TcpConnection tcpConnection = new TcpConnection(servicosItemTipoAmb.get(s).getZbcIpHost(), 4000, "DISKSPACE#" + servicosItemTipoAmb.get(s).getZbcIpHost() + "#8051#" + servicosItemTipoAmb.get(s).getZbcEnviro() + "#");
 			serverReturn = new StrToUTF8().convert(tcpConnection.getSrvReturn());
 			serverReturn = serverReturn.substring(1).replaceAll("Value cannot be null.", ""); // Retirando a "?" que aparece no início do JSON e a String "Value cannot be null." que aparece no final 
 			
 			RmSrvRetDskSpcParser r = new RmSrvRetDskSpcParser(serverReturn);
 			
-			filesSize += Float.valueOf(r.getDiskspace().getFilesSize().replaceAll(",", "."));
-			databaseSize = Float.valueOf(r.getDiskspace().getDatabaseSize().replaceAll(",", ".")); // Não soma... irá pegar o último
+			
+//			filesSize += Float.valueOf(r.getDiskspace().getFilesSize().replaceAll(",", "."));
+			filesSize += Float.valueOf(r.getDiskspace().getFilesSize().replaceAll(",", ".")) / 1024; // Para retornar o resultado em GB
+//			databaseSize = Float.valueOf(r.getDiskspace().getDatabaseSize().replaceAll(",", ".")); // Não soma... irá pegar o último
+			databaseSize = Float.valueOf(r.getDiskspace().getDatabaseSize().replaceAll(",", ".")) / 1024; // Não soma... irá pegar o último
 						
 			if(r.getDiskspace().getStatus().replaceAll("\\s", "").equals("0")) {
-				auxListZCA_MEMO.add("IP " + servicosItemTipoAmb.get(s).getZbcIpHost() + " - Consumo disco " + filesSize + " MB; ");
+//				auxListZCA_MEMO.add("IP " + servicosItemTipoAmb.get(s).getZbcIpHost() + " - Consumo disco " + r.getDiskspace().getFilesSize().replaceAll(",", ".") + " MB; ");
+				auxListZCA_MEMO.add("IP " + servicosItemTipoAmb.get(s).getZbcIpHost() + " - Consumo disco " + String.valueOf(Float.valueOf(r.getDiskspace().getFilesSize()) / 1024) + " GB; ");
 			}
 			else {
 				auxListZCA_MEMO.add("IP " + servicosItemTipoAmb.get(s).getZbcIpHost() + " - " + r.getDiskspace().getMessage() + ". ");  
@@ -106,7 +109,8 @@ public class DiskSpaceRM {
 			
 		}
 		
-		auxListZCA_MEMO.add("Consumo de banco: " + databaseSize + " MB");
+		//auxListZCA_MEMO.add("Consumo de banco: " + databaseSize + " MB");
+		auxListZCA_MEMO.add("Consumo de banco: " + databaseSize + " GB");
 		
 		ZCA_RESULT += filesSize + databaseSize;
 		

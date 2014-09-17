@@ -30,6 +30,7 @@ public class DispRPWDatasul {
 	private String ZCA_ITEM;
 	private float ZCA_RESULT = 0;
 	private String ZCA_MEMO = new String();
+	private String portaMonit;
 	
 	
 	public DispRPWDatasul(String codAmbiente, String codTipoAmbiente, String codMonitoramento, String codProduto) {
@@ -41,6 +42,7 @@ public class DispRPWDatasul {
 		Dao dao = new Dao();
 		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
+		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
 		
 		for(ItemAmbiente i : itensAmbiente) {
@@ -86,7 +88,7 @@ public class DispRPWDatasul {
 			    	rmiStrConnection.append("rmi://");
 			    	rmiStrConnection.append(hostMonit);
 			    	rmiStrConnection.append(":");
-			    	rmiStrConnection.append("1099");
+			    	rmiStrConnection.append(portaMonit);
 			    	rmiStrConnection.append("/DatasulCloudMonitor");
 			      
 			    	this.cloudService = ((RMICloudService)Naming.lookup(rmiStrConnection.toString()));
