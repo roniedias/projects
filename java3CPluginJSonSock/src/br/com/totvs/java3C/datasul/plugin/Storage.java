@@ -6,12 +6,12 @@ import java.util.List;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
-import br.com.totvs.java3C.bean.datasul.AppServer;
-import br.com.totvs.java3C.bean.datasul.AtalhoInfo;
-import br.com.totvs.java3C.bean.datasul.Banco;
-import br.com.totvs.java3C.bean.datasul.JBossInfo;
 
 import br.com.totvs.java3C.dao.Dao;
+//import br.com.totvs.java3C.datasul.bean.AppServer;
+import br.com.totvs.java3C.datasul.bean.AtalhoInfo;
+import br.com.totvs.java3C.datasul.bean.Banco;
+import br.com.totvs.java3C.datasul.bean.JBossInfo;
 import br.com.totvs.java3C.datasul.util.StorageUtil;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
@@ -31,12 +31,12 @@ public class Storage {
 	private String ZCA_MEMO = "Diretorios: ";
 	
 	
-	private ArrayList<AppServer> appServInfo;
+//	private ArrayList<AppServer> appServInfo;
 	private ArrayList<JBossInfo> jBossInfo;
 	private ArrayList<Banco> bancos;
 	
 	private AtalhoInfo atalhoInfo;
-	private String appServerIp = "no_info";
+//	private String appServerIp = "no_info";
 	private String bancoServerIp;
 	private String jBossServerIp;
 
@@ -88,7 +88,7 @@ public class Storage {
 		Dao dao = new Dao();
 
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
-		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
+//		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);
 		atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto); // Adicionado em 16/09/2014
 		bancos = dao.getBancos(codAmbiente, codTipoAmbiente, codProduto);
 		jBossInfo = dao.getJBossInfo(codAmbiente, codTipoAmbiente, codProduto);
@@ -109,7 +109,7 @@ public class Storage {
 		// =======
 		// Atalhos
 		// =======
-				
+/*				
 		for(AppServer a : appServInfo) { // Checando se há pelo menos um checkbox selecionado e obtendo o IP  
 			if(a.getMonitora().trim().equals("T")) { 
 				appServerIp = a.getIp().trim();
@@ -121,6 +121,7 @@ public class Storage {
 			System.out.println("Nenhum App Server configurado para ser monitorado. Verifique no 3C, o checkbox \"Monitora?\" em Datasul > AppServer/WebSpeed");
 			System.exit(1);
 		}
+*/
 		
 		try {
 			atalhoIp = atalhoInfo.getIp(); // Adicionado em 16/09/2014

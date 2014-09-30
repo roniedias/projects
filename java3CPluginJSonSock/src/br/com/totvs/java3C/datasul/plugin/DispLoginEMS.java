@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
-import br.com.totvs.java3C.bean.datasul.RpwLegado;
 import br.com.totvs.java3C.dao.Dao;
+import br.com.totvs.java3C.datasul.bean.AtalhoInfo;
+import br.com.totvs.java3C.datasul.bean.RpwLegado;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 import com.totvs.cloud.message.items.AvailabilityLoginEMSItem;
@@ -28,7 +29,8 @@ public class DispLoginEMS {
 	
 	private RMICloudService cloudService;
 	private ArrayList<ItemAmbiente> itensAmbiente;
-	private RpwLegado rpwLegado;
+	private AtalhoInfo atalhoInfo;
+	//private RpwLegado rpwLegado;
 	private String bancoFoundation;
 	private String usuarioItemAmbiente;
 	private String senhaItemAmbiente;
@@ -53,7 +55,7 @@ public class DispLoginEMS {
 	
 		Dao dao = new Dao();
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
-		rpwLegado = dao.getRpwLegado(codAmbiente, codTipoAmbiente, codProduto);
+		atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto);
 		bancoFoundation = dao.getBancoFoundation(codAmbiente, codTipoAmbiente, codProduto);
 		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		
@@ -83,10 +85,10 @@ public class DispLoginEMS {
 			System.exit(1);
 		}
 		
-		monitSrv = rpwLegado.getIp(); // IP do servidor de monitoramento = IP cadastrado em Datasul > Atalhos > Atalho 
-		dirProwin32 = rpwLegado.getDirProwin32();
-		dirArquivoPf = rpwLegado.getDirArquivoPf();
-		dirArquivoIni = rpwLegado.getDirArquivoIni();
+		monitSrv = atalhoInfo.getIp(); // IP do servidor de monitoramento = IP cadastrado em Datasul > Atalhos > Atalho 
+		dirProwin32 = atalhoInfo.getDirProwin32();
+		dirArquivoPf = atalhoInfo.getDirArquivoPf();
+		dirArquivoIni = atalhoInfo.getDirArquivoIni();
 		
 		if(dirProwin32.isEmpty() || dirArquivoPf.isEmpty() || dirArquivoIni.isEmpty()) {
 			System.out.println("Uma ou mais informacoes nao localizada(s) em Datasul > Atalhos > Atalho (\"Dir. Progress\", \"PFs\", \"INI\"). Verifique o cadastro do 3C.");

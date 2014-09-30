@@ -1,4 +1,4 @@
-package br.com.totvs.java3C.bean.datasul;
+package br.com.totvs.java3C.datasul.bean;
 
 public class AppServer {
 

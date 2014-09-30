@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
-import br.com.totvs.java3C.bean.datasul.Eai1Info;
 import br.com.totvs.java3C.dao.Dao;
+import br.com.totvs.java3C.datasul.bean.Eai1Info;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 import com.totvs.cloud.message.items.AvailabilityEAI1Item;

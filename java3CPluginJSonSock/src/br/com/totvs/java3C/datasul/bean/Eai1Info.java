@@ -1,7 +1,7 @@
-package br.com.totvs.java3C.bean.datasul;
+package br.com.totvs.java3C.datasul.bean;
 
-public class RpwLegado {
-
+public class Eai1Info {
+	
 	private String ip;
 	private String dirProwin32;
 	private String dirArquivoPf;
@@ -34,6 +34,6 @@ public class RpwLegado {
 	public void setDirArquivoIni(String dirArquivoIni) {
 		this.dirArquivoIni = dirArquivoIni;
 	}
-
+ 	
 
 }

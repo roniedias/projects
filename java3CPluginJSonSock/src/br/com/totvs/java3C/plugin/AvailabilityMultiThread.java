@@ -229,13 +229,21 @@ public class AvailabilityMultiThread {
 	 		 	
 	 	// Procedimento para remover repetições
 		 HashSet<String> hs = new HashSet<String>();
-		 for(AuxServicos a : auxServicosList)
-			 hs.add(a.getZCA_MEMO());
+		
+		 for(AuxServicos a : auxServicosList) {
+			 
+			 if(auxServicosList.size() > 0 && !a.getZCA_MEMO().trim().equals("OK")) { // Adicionando apenas os que não estão OK
+				 hs.add(a.getZCA_MEMO());
+			 }
+		 }
+		 
+		 if(hs.size() == 0) { // Se todos estiverem OK, o ZCA_MEMO deverá apenas retornar a string "OK"
+			 hs.add("Ambiente OK");
+		 }
 		 
 		 for(String h : hs)
 			 sb.append(h);
 			 
-
 		 
 	   	ZCA_MEMO = sb.toString();
 
@@ -273,7 +281,7 @@ public class AvailabilityMultiThread {
 	private ArrayList<AuxServicos> configParametros(AvailabilityParserMon availabilityParser, String ip, String porta, String environment, String ZCC_TIPSRV, ArrayList<String> LIST_ZBC_SEQ, ArrayList<String> LIST_ZBC_PORTA, ArrayList<String> LIST_ZBC_IPHOST, ArrayList<String> LIST_ZBC_DNS, ArrayList<String> LIST_ZBC_IPEXT) {
 		
 		String ZCC_STATUS;
-		String ZCA_MEMO;
+		String ZCA_MEMO = "OK";
 	    ArrayList<ServerAvailability> servers = new ArrayList<ServerAvailability>();
 	    String ZCC_SEQSRV = "";
 	    String ZCC_OBS = "";
@@ -282,8 +290,10 @@ public class AvailabilityMultiThread {
 	    ArrayList<AuxServicos> auxServicosList = new ArrayList<AuxServicos>();
 	    	    
 		
-        //ZCA_MEMO = "Environment: " + environment.replaceAll("\\s", "") + ", porta: " + porta.replaceAll("\\s", "") + " - " + availabilityParser.getMessageInfo() + "; ";
-	    ZCA_MEMO = "Ip: " + ip + ", environment: " + environment.replaceAll("\\s", "") + ", porta: " + porta.replaceAll("\\s", "") + " - " + availabilityParser.getMessageInfo() + "; ";
+        if(!availabilityParser.getMessageInfo().trim().equals("Ambiente OK")) { // Alteração efetuada em 19/09/2014
+        	ZCA_MEMO = "Ip: " + ip + ", environment: " + environment.replaceAll("\\s", "") + ", porta: " + porta.replaceAll("\\s", "") + " - " + availabilityParser.getMessageInfo() + "; ";
+        }
+        
 		servers = availabilityParser.getServers(); 
 		
 		                       // servers.size() = 5, 1, 1

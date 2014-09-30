@@ -25,5 +25,7 @@
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/datasul-cloud-monitor-server-client-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/o4glrt-11.3.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/openedge-11.3.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/httpclient-4.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/eclipse/plugins/httpcore-4.1.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

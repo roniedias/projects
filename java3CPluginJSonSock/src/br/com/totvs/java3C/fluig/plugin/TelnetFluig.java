@@ -10,7 +10,7 @@ import br.com.totvs.java3C.util.Telnet;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 
-public class AvailabilityFluig {
+public class TelnetFluig {
 	
 	private String ZCA_PARAM; 
 	private String ZCA_CODAMB;     
@@ -40,7 +40,7 @@ public class AvailabilityFluig {
 
 	
 
-	public AvailabilityFluig(String codAmbiente, String codTipoAmbiente, String codMonitoramento, String codProduto) {
+	public TelnetFluig(String codAmbiente, String codTipoAmbiente, String codMonitoramento, String codProduto) {
 			
 		this.ZCA_PARAM = codMonitoramento; 
 		this.ZCA_CODAMB = codAmbiente;     

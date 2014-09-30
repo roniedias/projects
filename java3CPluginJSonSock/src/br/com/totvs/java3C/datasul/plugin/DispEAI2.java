@@ -12,8 +12,8 @@ import com.totvs.cloud.service.RMICloudService;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
-import br.com.totvs.java3C.bean.datasul.Eai2Info;
 import br.com.totvs.java3C.dao.Dao;
+import br.com.totvs.java3C.datasul.bean.Eai2Info;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 

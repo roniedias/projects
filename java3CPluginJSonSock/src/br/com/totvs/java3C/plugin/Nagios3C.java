@@ -1,6 +1,8 @@
 package br.com.totvs.java3C.plugin;
 
-import br.com.totvs.java3C.fluig.plugin.AvailabilityFluig;
+import br.com.totvs.java3C.fluig.plugin.AvailabilityFluigShared;
+import br.com.totvs.java3C.fluig.plugin.StorageFluigShared;
+import br.com.totvs.java3C.fluig.plugin.TelnetFluig;
 import br.com.totvs.java3C.plugin.bdconn.Tss;
 import br.com.totvs.java3C.rm.plugin.AvailabilityRM;
 import br.com.totvs.java3C.rm.plugin.DiskSpaceRM;
@@ -55,9 +57,6 @@ public class Nagios3C {
 		else if(codMonitoramento.equals("079")) {
 			new StatusItemAmbiente(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
-		else if(codMonitoramento.equals("104")) {
-			new AvailabilityFluig(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
-		}
 		else if(codMonitoramento.equals("030")) {
 			new AvailabilityRM(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
@@ -102,7 +101,16 @@ public class Nagios3C {
 		}	
 		else if(codMonitoramento.equals("120")) {
 			new DispSQL(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
-		}									
+		}
+		else if(codMonitoramento.equals("104")) {
+			new TelnetFluig(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}
+		else if(codMonitoramento.equals("00")) {
+			new StorageFluigShared(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}
+		else if(codMonitoramento.equals("01")) {
+			new AvailabilityFluigShared(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}
 		else {
 			System.out.println("Codigo de monitoramento invalido.");
 			System.exit(3);
@@ -147,7 +155,10 @@ public class Nagios3C {
 //        	new Nagios3C("99958", "00", "002251", "02", "117", "000020"); 
 //		    new Nagios3C("99958", "00", "002251", "02", "118", "000020"); 
 //		    new Nagios3C("99958", "00", "002251", "02", "119", "000019"); 
-//			new Nagios3C("99958", "00", "002251", "02", "120", "000019"); 
+//			new Nagios3C("99958", "00", "002251", "02", "120", "000019");
+		
+//			new Nagios3C("TEZFF4", "00", "000128", "01", "01", "000071");
+		
 		    
 		}
 		else {

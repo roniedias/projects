@@ -12,9 +12,9 @@ import com.totvs.cloud.service.RMICloudService;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
-import br.com.totvs.java3C.bean.datasul.AppServer;
-import br.com.totvs.java3C.bean.datasul.JBossInfo;
 import br.com.totvs.java3C.dao.Dao;
+import br.com.totvs.java3C.datasul.bean.AppServer;
+import br.com.totvs.java3C.datasul.bean.JBossInfo;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 public class DispLoginDatasul {

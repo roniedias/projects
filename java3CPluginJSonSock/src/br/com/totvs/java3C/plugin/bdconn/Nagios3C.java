@@ -1,6 +1,6 @@
 package br.com.totvs.java3C.plugin.bdconn;
 
-import br.com.totvs.java3C.fluig.plugin.AvailabilityFluig;
+import br.com.totvs.java3C.fluig.plugin.TelnetFluig;
 import br.com.totvs.java3C.rm.plugin.AvailabilityRM;
 import br.com.totvs.java3C.rm.plugin.DiskSpaceRM;
 
@@ -42,7 +42,7 @@ public class Nagios3C {
 			new StatusItemAmbiente(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
 		else if(codMonitoramento.equals("104")) {
-			new AvailabilityFluig(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+			new TelnetFluig(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
 		else if(codMonitoramento.equals("030")) {
 			new AvailabilityRM(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);

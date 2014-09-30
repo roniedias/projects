@@ -11,14 +11,17 @@ import br.com.totvs.java3C.bean.ItemAmbiente;
 import br.com.totvs.java3C.bean.Servico;
 import br.com.totvs.java3C.bean.TipoAmbiente;
 import br.com.totvs.java3C.bean.TipoServico;
-import br.com.totvs.java3C.bean.datasul.AppServer;
-import br.com.totvs.java3C.bean.datasul.AtalhoInfo;
-import br.com.totvs.java3C.bean.datasul.Banco;
-import br.com.totvs.java3C.bean.datasul.Eai1Info;
-import br.com.totvs.java3C.bean.datasul.Eai2Info;
-import br.com.totvs.java3C.bean.datasul.JBossInfo;
-import br.com.totvs.java3C.bean.datasul.RpwLegado;
+import br.com.totvs.java3C.datasul.bean.AppServer;
+import br.com.totvs.java3C.datasul.bean.AtalhoInfo;
+import br.com.totvs.java3C.datasul.bean.Banco;
+import br.com.totvs.java3C.datasul.bean.Eai1Info;
+import br.com.totvs.java3C.datasul.bean.Eai2Info;
+import br.com.totvs.java3C.datasul.bean.JBossInfo;
+import br.com.totvs.java3C.datasul.bean.RpwLegado;
 import br.com.totvs.java3C.factory.DbConnectionFactory;
+import br.com.totvs.java3C.fluig.bean.FluigVolumeDirInfo;
+import br.com.totvs.java3C.fluig.bean.ItensAmbienteFluig;
+import br.com.totvs.java3C.fluig.bean.TiposServicosFluig;
 
 
 public class Dao {
@@ -489,60 +492,6 @@ public class Dao {
 	}
 	
 	
-//	public StorageDirItems getStorageDirItems(String codAmbiente, String codTipoAmbiente, String codProduto) {
-//		
-//		Statement stmt;
-//		ResultSet rs;
-//		String sql = "SELECT ZBQ_ESPECI, ZBQ_ESPCIF, ZBQ_SPOOL, ZBO_DIRLOC, ZBO_BKPAI, ZBO_BKPFUL, ZAE_IP FROM ZBQ000 AS ZBQ INNER JOIN ZBO000 AS ZBO ON ZBQ_ITEM = ZBO_ITEM INNER JOIN ZBB000 AS ZBB ON ZBO_CODAMB = ZBB_CODAMB INNER JOIN ZAE000 AS ZAE ON ZBQ_HOST = ZAE_HOST WHERE ZBO_CODAMB = '" + codAmbiente + "' AND ZBO_TIPAMB = '" + codTipoAmbiente + "' AND ZBB_PRODUT = '" + codProduto + "'  AND ZBO_ITEM = ZBB_ITEM AND ZBO.D_E_L_E_T_ = ' ' AND ZBQ.D_E_L_E_T_ = ' ' AND ZBB.D_E_L_E_T_ = ' ' AND ZAE.D_E_L_E_T_ = ' ' FETCH FIRST ROW ONLY";
-//		StorageDirItems storageDirItems = new StorageDirItems();
-//		
-//		try {
-//			stmt = connection.createStatement();
-//			rs = stmt.executeQuery(sql);
-//					
-//			if(rs.next()) {				
-//
-//				if(rs.getString("ZBQ_ESPECI").trim().isEmpty())
-//					storageDirItems.setEspeciais("no_info");
-//				else
-//					storageDirItems.setEspeciais(rs.getString("ZBQ_ESPECI"));
-//								
-//				if(rs.getString("ZBQ_ESPCIF").trim().isEmpty())
-//					storageDirItems.setEspecificos("no_info");
-//				else
-//					storageDirItems.setEspecificos(rs.getString("ZBQ_ESPCIF"));
-//
-//				if(rs.getString("ZBQ_SPOOL").trim().isEmpty())
-//					storageDirItems.setSpool("no_info");
-//				else
-//					storageDirItems.setSpool(rs.getString("ZBQ_SPOOL"));
-//		
-//				if(rs.getString("ZBO_DIRLOC").trim().isEmpty())
-//					storageDirItems.setDirBanco("no_info");
-//				else
-//					storageDirItems.setDirBanco(rs.getString("ZBO_DIRLOC"));
-//				
-//				if(rs.getString("ZBO_BKPAI").trim().isEmpty()) 
-//					storageDirItems.setBkpAiLog("no_info");	
-//				else
-//					storageDirItems.setBkpAiLog(rs.getString("ZBO_BKPAI"));
-//				
-//				if(rs.getString("ZBO_BKPFUL").trim().isEmpty()) 
-//					storageDirItems.setBkpFull("no_info");	
-//				else				
-//					storageDirItems.setBkpFull(rs.getString("ZBO_BKPFUL"));
-//				
-//				if(rs.getString("ZAE_IP").trim().isEmpty()) 
-//					storageDirItems.setBkpFull("no_info");	
-//				else				
-//					storageDirItems.setIpAtalho(rs.getString("ZAE_IP"));
-//			}
-//		}
-//		catch(SQLException e) {
-//			throw new RuntimeException(e);
-//		}
-//		return storageDirItems;
-//	}
 	
 	
 	public RpwLegado getRpwLegado(String codAmbiente, String codTipoAmbiente, String codProduto) {
@@ -569,8 +518,104 @@ public class Dao {
 		return rpwLegado;
 	}
 		
-		
+
+	/*
+	 * ========== Métodos Específicos Produto Fluig =============================================	
+	 */
 	
+	
+	public ItensAmbienteFluig getItensAmbienteFluig(String codAmbiente, String codTipoAmbiente, String codProduto) {
+		
+		ItensAmbienteFluig itensAmbienteFluig = null;
+		
+		Statement stmt;
+		ResultSet rs;
+		
+		String sql = "SELECT ZBB_MODALI, ZBB_ITEM, ZBB_STATUS, ZAE_IP, ZAT_PORTA FROM ZBB000 AS ZBB INNER JOIN ZAE000 AS ZAE ON ZBB_HOST = ZAE_HOST INNER JOIN ZAT000 AS ZAT ON ZBB_HOST = ZAT_HOST WHERE ZBB_CODAMB = '" + codAmbiente + "' AND ZBB_TIPAMB = '" + codTipoAmbiente + "' AND ZBB_PRODUT = '" + codProduto + "' AND ZAT_TPORTA = '01' AND ZBB.D_E_L_E_T_ = ' ' AND ZAE.D_E_L_E_T_ = ' ' AND ZAT.D_E_L_E_T_ = ' '";
+		
+		try {
+						
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+					
+			while(rs.next()) {
+				itensAmbienteFluig = new ItensAmbienteFluig();
+				itensAmbienteFluig.setModalidade(rs.getString("ZBB_MODALI").trim());
+				itensAmbienteFluig.setCodItem(rs.getString("ZBB_ITEM").trim());
+				itensAmbienteFluig.setStatus(rs.getString("ZBB_STATUS").trim());
+				itensAmbienteFluig.setIp(rs.getString("ZAE_IP").trim());
+				itensAmbienteFluig.setPortaWeb(rs.getString("ZAT_PORTA").trim());
+			}
+		}
+		catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return itensAmbienteFluig;		
+	}
+	
+	
+	
+	public FluigVolumeDirInfo getFluigVolumeDirInfo(String codAmbiente, String codTipoAmbiente, String codProduto) {
+		
+		FluigVolumeDirInfo fluigVolumeDirInfo = new FluigVolumeDirInfo();
+		
+		Statement stmt;
+		ResultSet rs;
+		
+		String sql = "SELECT ZAR_USER, ZAR_SENHA, ZF5_PATH, ZAE_IP, ZBB_MODALI FROM ZBB000 AS ZBB INNER JOIN ZF5000 AS ZF5 ON ZBB_CODAMB = ZF5_CODAMB INNER JOIN ZAR000 AS ZAR ON ZAR_HOST = ZBB_HOST INNER JOIN ZAE000 AS ZAE ON ZBB_HOST = ZAE_HOST WHERE ZBB_CODAMB = '" + codAmbiente + "' AND ZBB_TIPAMB = '" + codTipoAmbiente + "' AND ZBB_PRODUT = '" + codProduto + "' AND ZF5_TIPSRV = '28' AND ZBB.D_E_L_E_T_ = ' ' AND ZF5.D_E_L_E_T_ = ' ' AND ZAE.D_E_L_E_T_ = ' ' FETCH FIRST ROW ONLY"; 
+		
+		try {
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+					
+			if(rs.next()) {
+				fluigVolumeDirInfo.setUsuario(rs.getString("ZAR_USER").trim());
+				fluigVolumeDirInfo.setSenha(rs.getString("ZAR_SENHA").trim());
+				fluigVolumeDirInfo.setDir(rs.getString("ZF5_PATH").trim());
+				fluigVolumeDirInfo.setIp(rs.getString("ZAE_IP").trim());
+			}
+			
+		}
+		catch(SQLException e) {
+			throw new RuntimeException(e);			
+		}
+		
+		return fluigVolumeDirInfo;
+	}
+	
+	
+	
+	public ArrayList<TiposServicosFluig> getTiposServicosFluig(String codAmbiente, String codTipoAmbiente, String codProduto) {
+		
+		ArrayList<TiposServicosFluig> tipSrvFluigArrLst = new ArrayList<TiposServicosFluig>();
+		Statement stmt;
+		ResultSet rs;
+		
+		String sql = "SELECT ZF4_TIPSRV, ZB4_DESCR, ZAE_IP, ZAT_PORTA, ZF4_MONITO FROM ZBB000 AS ZBB INNER JOIN ZAE000 AS ZAE ON ZBB_HOST = ZAE_HOST INNER JOIN ZF4000 AS ZF4 ON ZF4_CODAMB = ZBB_CODAMB AND ZF4_TIPAMB = ZBB_TIPAMB INNER JOIN ZB4000 AS ZB4 ON ZB4_CODIGO = ZF4_TIPSRV INNER JOIN ZAT000 AS ZAT ON ZAT_SEQ = ZF4_SEQPOR WHERE ZBB_CODAMB = '" + codAmbiente + "' AND ZBB_TIPAMB = '" + codTipoAmbiente + "' AND ZBB_PRODUT = '" + codProduto + "' AND ZF4_MONITO = 'S' AND ZBB.D_E_L_E_T_ = ' ' AND ZAE.D_E_L_E_T_ = ' ' AND ZF4.D_E_L_E_T_ = ' ' AND ZAT.D_E_L_E_T_ = ' '";
+		
+		try {
+			
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				TiposServicosFluig tiposServicosFluig = new TiposServicosFluig();
+				tiposServicosFluig.setCodTipSrv(rs.getString("ZF4_TIPSRV").trim());
+				tiposServicosFluig.setNomeTipSrv(rs.getString("ZB4_DESCR").trim());
+				tiposServicosFluig.setIp(rs.getString("ZAE_IP").trim());
+				tiposServicosFluig.setPorta(rs.getString("ZAT_PORTA").trim());
+				tiposServicosFluig.setMonitora(rs.getString("ZF4_MONITO").trim());
+				tipSrvFluigArrLst.add(tiposServicosFluig);
+			}
+			
+		}
+		catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return tipSrvFluigArrLst;
+	}
 	
 	
 	public void closeConnection() {
@@ -580,6 +625,8 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 
 }

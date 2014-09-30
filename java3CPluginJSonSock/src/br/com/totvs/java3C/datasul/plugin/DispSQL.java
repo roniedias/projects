@@ -16,9 +16,9 @@ import com.totvs.cloud.message.params.AvailabilityParamsSQL;
 import com.totvs.cloud.service.RMICloudService;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
-import br.com.totvs.java3C.bean.datasul.Banco;
 import br.com.totvs.java3C.bean.ItemAmbiente;
 import br.com.totvs.java3C.dao.Dao;
+import br.com.totvs.java3C.datasul.bean.Banco;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 public class DispSQL {

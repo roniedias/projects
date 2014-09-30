@@ -14,10 +14,10 @@ import java.util.List;
 
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
-import br.com.totvs.java3C.bean.datasul.AppServer;
-import br.com.totvs.java3C.bean.datasul.AtalhoInfo;
-import br.com.totvs.java3C.bean.datasul.Banco;
 import br.com.totvs.java3C.dao.Dao;
+import br.com.totvs.java3C.datasul.bean.AppServer;
+import br.com.totvs.java3C.datasul.bean.AtalhoInfo;
+import br.com.totvs.java3C.datasul.bean.Banco;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 import com.totvs.cloud.message.items.AvailabilityDatabaseItem;
