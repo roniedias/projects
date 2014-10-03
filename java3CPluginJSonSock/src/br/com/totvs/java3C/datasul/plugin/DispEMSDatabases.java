@@ -15,7 +15,7 @@ import java.util.List;
 import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
 import br.com.totvs.java3C.dao.Dao;
-import br.com.totvs.java3C.datasul.bean.AppServer;
+//import br.com.totvs.java3C.datasul.bean.AppServer;
 import br.com.totvs.java3C.datasul.bean.AtalhoInfo;
 import br.com.totvs.java3C.datasul.bean.Banco;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
@@ -30,7 +30,7 @@ public class DispEMSDatabases {
 	private ArrayList<Banco> bancos;
 	private ArrayList<ItemAmbiente> itensAmbiente;
 	private List<AvailabilityDatabaseItem> avalItems = new ArrayList<AvailabilityDatabaseItem>();
-	private ArrayList<AppServer> appServInfo;	
+	//private ArrayList<AppServer> appServInfo;	
 	private AtalhoInfo atalhoInfo;
 	private String dirProwin32;
 	private String dirArquivoPf;
@@ -42,8 +42,10 @@ public class DispEMSDatabases {
 	private String ZCA_ITEM;
 	private float ZCA_RESULT = 100;
 	private String ZCA_MEMO;
-	private String appServerIp = "no_info";
+//	private String appServerIp = "no_info";
 	private String portaMonit;
+	private String monitSrv;
+	
 
 	// Todas as informações, com exceção dos nomes dos bancos (presentes em Datasul > BANCOS > Nome Fisico), 
     //	serão obtidas a partir de Datasul > Atalhos > Atalho, inclusive o IP do servidor de monitoramento. 
@@ -62,7 +64,7 @@ public class DispEMSDatabases {
 		Dao dao = new Dao();
 		itensAmbiente = dao.getItensAmbiente(codAmbiente, codTipoAmbiente);
 		atalhoInfo = dao.getAtalhoInfo(codAmbiente, codTipoAmbiente, codProduto);
-		appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);		
+		//appServInfo = dao.getAppServers(codAmbiente, codTipoAmbiente, codProduto);		
 		bancos = dao.getBancos(codAmbiente, codTipoAmbiente, codProduto);
 		portaMonit = dao.getCliente(codAmbiente).getPortaMonit();
 		dao.closeConnection();
@@ -78,7 +80,7 @@ public class DispEMSDatabases {
 		// Validação se o ambiente encontra-se com status ATIVO, EM MANUTENÇÃO, CADASTRO, SUSPENSO ou DESATIVADO. 
 		new ValidacaoStatusAmb(ZBB_STATUS, ZCA_CODAMB, ZCA_ITEM, ZCA_PARAM, ZCA_TIPAMB);
 		
-
+/*
 		for(AppServer a : appServInfo) { // Checando se há pelo menos um checkbox selecionado e obtendo o IP  
 			if(a.getMonitora().trim().equals("T")) { 
 				appServerIp = a.getIp().trim();
@@ -90,9 +92,11 @@ public class DispEMSDatabases {
 			System.out.println("Nenhum App Server configurado para ser monitorado. Verifique no 3C, o checkbox \"Monitora?\" em Datasul > AppServer/WebSpeed");
 			System.exit(1);
 		}
+*/
 		
 
 		try {
+			monitSrv = atalhoInfo.getIp().trim();
 			dirProwin32 = atalhoInfo.getDirProwin32().trim();
 			dirArquivoPf = atalhoInfo.getDirArquivoPf().trim();
 			dirArquivoIni = atalhoInfo.getDirArquivoIni().trim();			
@@ -108,7 +112,8 @@ public class DispEMSDatabases {
 	    try
 	    {
 	    	rmiStrConnection.append("rmi://");
-	    	rmiStrConnection.append(appServerIp);
+	    	//rmiStrConnection.append(appServerIp);
+	    	rmiStrConnection.append(monitSrv);
 	    	rmiStrConnection.append(":");
 	    	rmiStrConnection.append(portaMonit);
 	    	rmiStrConnection.append("/DatasulCloudMonitor");

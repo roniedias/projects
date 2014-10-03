@@ -10,7 +10,7 @@ import br.com.totvs.java3C.JSonParser.write.ParserWrite;
 import br.com.totvs.java3C.bean.ItemAmbiente;
 import br.com.totvs.java3C.dao.Dao;
 import br.com.totvs.java3C.datasul.bean.AtalhoInfo;
-import br.com.totvs.java3C.datasul.bean.RpwLegado;
+//import br.com.totvs.java3C.datasul.bean.RpwLegado;
 import br.com.totvs.java3C.util.ValidacaoStatusAmb;
 
 import com.totvs.cloud.message.items.AvailabilityLoginEMSItem;

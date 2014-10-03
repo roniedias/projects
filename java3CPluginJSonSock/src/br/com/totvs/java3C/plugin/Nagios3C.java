@@ -57,6 +57,9 @@ public class Nagios3C {
 		else if(codMonitoramento.equals("079")) {
 			new StatusItemAmbiente(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
+		else if(codMonitoramento.equals("122")) {
+			new Performance(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}		
 		else if(codMonitoramento.equals("030")) {
 			new AvailabilityRM(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
@@ -158,6 +161,8 @@ public class Nagios3C {
 //			new Nagios3C("99958", "00", "002251", "02", "120", "000019");
 		
 //			new Nagios3C("TEZFF4", "00", "000128", "01", "01", "000071");
+			
+//			new Nagios3C("99061", "00", "000117", "01", "122", "000093"); // Performance Protheus
 		
 		    
 		}
