@@ -79,7 +79,7 @@ public class AvailabilityFluigShared {
 		this.ZCA_ITEM = itensAmbienteFluig.getCodItem();
 		
 		// Validação se o ambiente encontra-se com status ATIVO, EM MANUTENÇÃO, CADASTRO, SUSPENSO ou DESATIVADO. 
-//		new ValidacaoStatusAmb(ZBB_STATUS, ZCA_CODAMB, ZCA_ITEM, ZCA_PARAM, ZCA_TIPAMB);
+		new ValidacaoStatusAmb(ZBB_STATUS, ZCA_CODAMB, ZCA_ITEM, ZCA_PARAM, ZCA_TIPAMB);
 
 		
 		if(!itensAmbienteFluig.getModalidade().equals("C")) { // Se o Fluig não for "Compartilhado"
@@ -105,7 +105,7 @@ public class AvailabilityFluigShared {
 		for(TiposServicosFluig t : tiposServicosFluig) {
 						
 			   //JBOSS FLUIG (TELNET)           //CHAT FLUIG (TELNET)            //REALTIME FLUIG (TELNET)
-			if(t.getCodTipSrv().equals("28") || t.getCodTipSrv().equals("29") || t.getCodTipSrv().equals("34")) {
+			if(t.getCodTipSrv().equals("68") || t.getCodTipSrv().equals("55") || t.getCodTipSrv().equals("70")) {
 				
 				// Executando o telnet
 				Telnet telnet = new Telnet(t.getIp(), Integer.valueOf(t.getPorta()));
@@ -125,7 +125,7 @@ public class AvailabilityFluigShared {
 				
 				
 				//CACHE FLUIG (API)
-				if(t.getCodTipSrv().equals("30")) {
+				if(t.getCodTipSrv().equals("55")) {
 					if(!memcachedAvailability.equals("OK")) {
 						ZCA_RESULT = 0;
 					}						
@@ -133,7 +133,7 @@ public class AvailabilityFluigShared {
 				}
 				
 				//OFFICE FLUIG (API)
-				if(t.getCodTipSrv().equals("31")) {
+				if(t.getCodTipSrv().equals("56")) {
 					if(!openOfficeServerAvailability.equals("OK")) {
 						ZCA_RESULT = 0;
 					}						
@@ -141,7 +141,7 @@ public class AvailabilityFluigShared {
 				}
 				
 				//INDEX FLUIG (API)
-				if(t.getCodTipSrv().equals("32")) {
+				if(t.getCodTipSrv().equals("69")) {
 					if(!solrServerAvailability.equals("OK")) {
 						ZCA_RESULT = 0;
 					}						
@@ -149,7 +149,7 @@ public class AvailabilityFluigShared {
 				}
 				
 				//ANALYTICS FLUIG (API)
-				if(t.getCodTipSrv().equals("33")) {
+				if(t.getCodTipSrv().equals("57")) {
 					if(!goodDataAvailability.equals("OK")) {
 						ZCA_RESULT = 0;
 					}						
@@ -157,7 +157,7 @@ public class AvailabilityFluigShared {
 				}
 				
 				//IDENTITY (API)
-				if(t.getCodTipSrv().equals("35")) {
+				if(t.getCodTipSrv().equals("58")) {
 					if(!identityAvailability.equals("OK")) {
 						ZCA_RESULT = 0;
 					}						

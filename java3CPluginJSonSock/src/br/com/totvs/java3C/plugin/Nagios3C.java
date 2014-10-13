@@ -2,7 +2,7 @@ package br.com.totvs.java3C.plugin;
 
 import br.com.totvs.java3C.fluig.plugin.AvailabilityFluigShared;
 import br.com.totvs.java3C.fluig.plugin.StorageFluigShared;
-import br.com.totvs.java3C.fluig.plugin.TelnetFluig;
+//import br.com.totvs.java3C.fluig.plugin.TelnetFluig;
 import br.com.totvs.java3C.plugin.bdconn.Tss;
 import br.com.totvs.java3C.rm.plugin.AvailabilityRM;
 import br.com.totvs.java3C.rm.plugin.DiskSpaceRM;
@@ -106,13 +106,10 @@ public class Nagios3C {
 			new DispSQL(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
 		else if(codMonitoramento.equals("104")) {
-			new TelnetFluig(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
-		}
-		else if(codMonitoramento.equals("00")) {
-			new StorageFluigShared(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
-		}
-		else if(codMonitoramento.equals("01")) {
 			new AvailabilityFluigShared(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
+		}
+		else if(codMonitoramento.equals("123")) {
+			new StorageFluigShared(codAmbiente, codTipoAmbiente, codMonitoramento, codProduto);
 		}
 		else {
 			System.out.println("Codigo de monitoramento invalido.");
@@ -163,6 +160,7 @@ public class Nagios3C {
 //			new Nagios3C("TEZFF4", "00", "000128", "01", "01", "000071");
 			
 //			new Nagios3C("99061", "00", "000117", "01", "122", "000093"); // Performance Protheus
+//			new Nagios3C("T15688", "00", "001338", "01", "123", "000112"); // Storage Fluig
 		
 		    
 		}
