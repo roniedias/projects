@@ -89,7 +89,8 @@ public class FluigAPI {
 			HttpClient httpClient = new DefaultHttpClient();
 			
 			try {
-	        	HttpGet httpGet = new HttpGet("http://" + itensAmbienteFluig.getIp() + ":" + itensAmbienteFluig.getPortaWeb() + "/monitor/report/" + tipo);
+				String urlMonit = "http://" + itensAmbienteFluig.getIp() + ":" + itensAmbienteFluig.getPortaWeb() + "/monitor/report/" + tipo;
+				HttpGet httpGet = new HttpGet(urlMonit);
 	            ResponseHandler<String> responseHandler = new BasicResponseHandler();
 	            String responseBody;
 				responseBody = httpClient.execute(httpGet, responseHandler);

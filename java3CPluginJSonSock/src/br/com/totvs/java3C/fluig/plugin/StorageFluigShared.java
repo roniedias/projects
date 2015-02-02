@@ -59,9 +59,9 @@ public class StorageFluigShared {
 		dir = fluigVolumeDirInfo.getDir();
 		ip = fluigVolumeDirInfo.getIp();
 		
-		serverVolumeDirSize = new ServerVolumeDir(usuario, senha, dir, ip).getSize();
-		volumeDirSizeFromAPI = new FluigAPI(itensAmbienteFluig, "volumeDirSize").getResult();
-		databaseSizeFromAPI = new FluigAPI(itensAmbienteFluig, "databaseSize").getResult();
+		serverVolumeDirSize = new ServerVolumeDir(usuario, senha, dir, ip).getSize().trim();
+		volumeDirSizeFromAPI = new FluigAPI(itensAmbienteFluig, "volumeDirSize").getResult().trim();
+		databaseSizeFromAPI = new FluigAPI(itensAmbienteFluig, "databaseSize").getResult().trim();
 		
 		VolumeParser vp = new VolumeParser();
 		

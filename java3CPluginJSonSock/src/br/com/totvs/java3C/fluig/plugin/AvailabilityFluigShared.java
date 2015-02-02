@@ -187,21 +187,16 @@ public class AvailabilityFluigShared {
 		ZCA_MEMO += "DATABASE FLUIG: " + databaseAvailability + " (VIA API); ";
 		ZCA_MEMO += "LICENSE SERVER FLUIG: " + licenseServerAvailability + " (VIA API); ";
 		
-		
-   		System.out.println("Resultado: " + ZCA_RESULT + ". "+ ZCA_MEMO);		
-		
-				
-		
-//		ParserWrite parserWrite = new ParserWrite("GENERIC_WRITE", ZCA_CODAMB, ZCA_TIPAMB, ZCA_ITEM, ZCA_PARAM, String.valueOf(ZCA_RESULT), ZCA_MEMO);
-//
-//		if(parserWrite.getStatus().equals("0")) { // Se correu tudo bem com a gravação
-//	   		System.out.println("Resultado: " + ZCA_RESULT + ". "+ ZCA_MEMO);
-//	   		System.exit(Integer.parseInt(parserWrite.getLimiar()));
-//	   	}
-//	   	else {
-//	   		System.out.println(parserWrite.getMessage());
-//	   		System.exit(Integer.parseInt(parserWrite.getLimiar()));
-//	   	}
+		ParserWrite parserWrite = new ParserWrite("GENERIC_WRITE", ZCA_CODAMB, ZCA_TIPAMB, ZCA_ITEM, ZCA_PARAM, String.valueOf(ZCA_RESULT), ZCA_MEMO);
+
+		if(parserWrite.getStatus().equals("0")) { // Se correu tudo bem com a gravação
+	   		System.out.println("Resultado: " + ZCA_RESULT + ". "+ ZCA_MEMO);
+	   		System.exit(Integer.parseInt(parserWrite.getLimiar()));
+	   	}
+	   	else {
+	   		System.out.println(parserWrite.getMessage());
+	   		System.exit(Integer.parseInt(parserWrite.getLimiar()));
+	   	}
 		
 	}
 

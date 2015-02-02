@@ -18,7 +18,7 @@ public class ServerVolumeDir {
 			
 		try 
 		{ 			
-			String str = "sshpass -p " + senha + " ssh " + usuario + "@" + ip + " du -sh " + dir; // Ex. no Windows: // String str = "plink " + usuario + "@" + ip + "-pw " + senha + " du -sh " + dir;
+			String str = "sshpass -p '" + senha + "' ssh " + usuario + "@" + ip + " du -sh " + dir; // Ex. no Windows: // String str = "plink " + usuario + "@" + ip + "-pw " + senha + " du -sh " + dir;
 			String[] command = {"/bin/sh", "-c", str};
 			Process p = Runtime.getRuntime().exec(command); 
 			BufferedReader stdout=new BufferedReader(new InputStreamReader(p.getInputStream())); 

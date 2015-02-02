@@ -160,7 +160,8 @@ public class Nagios3C {
 //			new Nagios3C("TEZFF4", "00", "000128", "01", "01", "000071");
 			
 //			new Nagios3C("99061", "00", "000117", "01", "122", "000093"); // Performance Protheus
-//			new Nagios3C("T15688", "00", "001338", "01", "123", "000112"); // Storage Fluig
+//			new Nagios3C("TEXHUW", "00", "002494", "01", "104", "000075"); // Storage Fluig
+//			new Nagios3C("T15688", "00", "001338", "01", "104", "000112"); // Disp Fluig
 		
 		    
 		}
